@@ -455,6 +455,30 @@ nav.gnb a{font-size:14px;padding:8px 10px;border-bottom-width:2px}
 @media (max-width:380px){.beta-tag{display:none}.mark .nm b{font-size:14px}}
 
 @media (max-width:720px){.menu-pop.wide{position:fixed;left:12px;right:12px;top:56px;width:auto}}
+
+.conn-card{border:1px solid var(--line);border-radius:10px;background:#e9f4ee;padding:12px;display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.conn-card.off{background:#fdf1ee;border-color:#f0c9c0}
+.cc-top{display:flex;gap:10px;align-items:flex-start}
+.cc-ic{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-weight:900;display:grid;place-items:center}
+.conn-card.off .cc-ic{background:#a52a1e}
+.cc-top b{display:block;font-size:15px}
+.cc-top small{display:block;color:var(--muted);font-size:12.5px;line-height:1.45}
+.cc-open{display:block;text-align:center;background:var(--green);color:#fff;font-weight:700;padding:10px 12px;border-radius:8px;text-decoration:none}
+.cc-open:hover{filter:brightness(1.1)}
+.cc-open[hidden]{display:none}
+.conn-more{margin:4px 0 10px}
+.conn-more>summary{cursor:pointer;font-weight:700;color:var(--green);padding:4px 0;font-size:14px}
+.cm-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.cm{all:unset;box-sizing:border-box;display:grid;grid-template-columns:20px 1fr;gap:8px;align-items:start;padding:10px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:#fff;width:100%}
+.cm b{font-size:14px;display:block}.cm small{display:block;font-size:12px;color:var(--muted);line-height:1.45;margin-top:2px}
+.cm .rd{width:16px;height:16px;border:2px solid #8a8f8c;border-radius:50%;margin-top:2px;box-sizing:border-box}
+.cm[aria-pressed="true"]{border-color:var(--green);background:#e9f4ee}
+.cm[aria-pressed="true"] .rd{border-color:var(--green);background:radial-gradient(circle,var(--green) 45%,transparent 50%)}
+.cm.dis{opacity:.55}
+.cm:focus-visible{outline:2px solid var(--green)}
+.conn-more .ai-tip{margin:10px 0 0}
+.cc-prompt{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;padding:10px 12px;border:1px solid var(--green);color:var(--green);border-radius:8px;font-weight:700;cursor:pointer;margin:6px 0 4px;font-size:13.5px}
+.cc-prompt:hover{background:#e9f4ee}
 /* ===== 오류 표시 미리보기 ===== */
 .shot-th img{cursor:zoom-in}
 .shot-th .mk-n{position:absolute;left:30px;top:4px;background:#d62839;color:#fff;font-size:11px;font-weight:700;border-radius:3px;padding:0 6px;cursor:pointer}
@@ -784,15 +808,22 @@ details.more[open] summary{margin-bottom:8px}
     <div class="menu" id="aiMenu">
       <button class="chipbtn" id="aiChip" aria-haspopup="true" aria-expanded="false" title="AI 연결"><span id="modePill" class="ai-pill">확인 중</span> ▾</button>
       <div class="menu-pop wide" id="aiPop" hidden>
-        <h4>AI 연결</h4>
-        <p class="ai-tip" id="aiTip"></p>
-        <div class="qm" id="qm" role="group" aria-label="연결 방식">
-          <button class="btn sm" data-m="account" type="button">본인 Claude 계정</button>
-          <button class="btn sm" data-m="chat" type="button">Claude 채팅창</button>
-          <button class="btn sm" data-m="apikey" type="button">API 키</button>
-          <button class="btn sm" data-m="rules" type="button">AI 없이</button>
+        <div class="conn-card" id="connCard">
+          <div class="cc-top"><span class="cc-ic" aria-hidden="true">C</span><div><b id="ccTitle">확인 중</b><small id="ccSub"></small></div></div>
+          <a class="cc-open" id="ccOpen" href="https://claude.ai/artifact/Bd9u56YXJaqyfnhUADafPy" target="_blank" rel="noopener">견적김군 claude.ai에서 열기 ↗</a>
         </div>
+        <details class="conn-more" id="connMore" open>
+          <summary>다른 연결 방식</summary>
+          <div class="cm-list qm" id="qm" role="radiogroup" aria-label="연결 방식">
+            <button class="cm" data-m="account" type="button" role="radio"><i class="rd"></i><span><b>본인 Claude 계정</b><small>claude.ai 링크로 열면 자동 연결 · 본인 사용 한도에서 차감</small></span></button>
+            <button class="cm" data-m="chat" type="button" role="radio"><i class="rd"></i><span><b>Claude 채팅창 이용</b><small>요청문 복사 → claude.ai 채팅에 붙여넣기 → 답을 다시 붙여넣기 · 어디서나 · 키 불필요</small></span></button>
+            <button class="cm" data-m="apikey" type="button" role="radio"><i class="rd"></i><span><b>Claude API 키</b><small>내려받은 HTML 파일에서 사용 · API 요금 별도</small></span></button>
+            <button class="cm" data-m="rules" type="button" role="radio"><i class="rd"></i><span><b>AI 없이 기본 규칙</b><small>맞춤법·띄어쓰기·날짜·기호 등 내장 규칙만</small></span></button>
+          </div>
+          <p class="ai-tip" id="aiTip"></p>
+        </details>
         <div class="pop-row"><button class="btn sm" id="modeBtn" type="button">연결 세부 설정 (API 키·모델)</button></div>
+        <button class="cc-prompt" id="otherAiBtn2" type="button">✎ 다른 AI(ChatGPT·Gemini 등)용 프롬프트 제안</button>
         <h4>검토 사용</h4>
         <div class="pop-row"><span id="useState" class="ai-pill"></span><button class="btn sm" id="useBtn" type="button">이용권 코드 · 팀 암호</button></div>
         <p class="track-note">AI 연결이 안 되면 오른쪽 <b>Teams 채팅</b>으로 앵커김군에게 바로 문의하세요.</p>
@@ -1387,6 +1418,7 @@ const LOG_ENDPOINT="";                   // 이용 기록을 받을 주소(선�
 const CONTACT="coolzet@konkuk.ac.kr";
 const BASIS=[["요강","건국대 구매계약업무요강(3-1-21)","2025. 10. 1."],["보조금","보조금법·지침",""],["부가세","부가가치세법",""]];  // [짧은 이름, 기준 문서, 확인일]. 빈 날짜는 관리자가 입력
 const MODELS=[["claude-sonnet-5-5","Sonnet 5.5 · 균형"],["claude-haiku-5-5","Haiku 5.5 · 빠름"],["claude-opus-5-5","Opus 5.5 · 정밀"]];
+const ART_URL="https://claude.ai/artifact/Bd9u56YXJaqyfnhUADafPy";
 const MODE_LABEL={account:"본인 Claude 계정",chat:"Claude 채팅창",apikey:"Claude API 키",rules:"AI 없이 기본 규칙"};
 let sample=null,imgLimits=null,ctl=null;
 let acctReady=null,acctWhy=null;         // acctReady: null 확인 중 · true · false
@@ -1449,7 +1481,15 @@ function renderConn(){
   else{t="AI 없이 비교표에 직접 입력한 값으로 규칙 점검만 합니다. 견적서 이미지는 읽지 않습니다.";}
   pill.textContent=label;pill.className=cls;
   tip.textContent=t;
-  document.querySelectorAll("#qm [data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));
+  document.querySelectorAll("#qm [data-m]").forEach(b=>{b.setAttribute("aria-pressed",String(b.dataset.m===m));b.setAttribute("aria-checked",String(b.dataset.m===m));b.classList.toggle("dis",b.dataset.m==="account"&&acctReady!==true);});
+  {const off=cls.includes("off"),inArt=!!(window.claude&&window.claude.use);
+   const T={account:["본인 Claude 계정 연결됨","claude.ai 계정으로 견적서를 읽습니다"],chat:["Claude 채팅창 이용 중","요청문을 claude.ai 채팅에 붙여 넣는 방식"],apikey:["Claude API 키 이용 중","이 브라우저에서 Anthropic으로 직접 보냅니다"],rules:["AI 없이 기본 규칙 사용 중","비교표 값으로 규칙 점검만 합니다"]}[m];
+   let ti=T[0],su=T[1];
+   if(m==="account"&&acctReady!==true){ti=acctReady===null?"연결 확인 중":"본인 계정 연결 안 됨";su=acctReady===null?"":"claude.ai 링크로 열어야 쓸 수 있습니다";}
+   if(m==="apikey"&&!apiKey){ti="API 키 입력 필요";su="‘연결 세부 설정’에서 키를 입력하세요";}
+   $("ccTitle").textContent=ti;$("ccSub").textContent=su;
+   $("connCard").classList.toggle("off",off);
+   const op=$("ccOpen");op.hidden=inArt;}
   const noAI=(m==="rules")||cls.includes("off");
   const tb=$("tmBtn");if(tb){tb.classList.toggle("alert",noAI);$("tmWarn").hidden=!noAI;}
   const us=$("useState"),u=getU(),gated=(m==="account"||m==="apikey");
@@ -2397,6 +2437,7 @@ ip.addEventListener("drop",e=>{if(e.defaultPrevented)return;e.preventDefault();t
       fin();
     }).catch(()=>{acctReady=false;acctWhy="unavail";fin();});
   }else{acctReady=false;acctWhy="nofile";fin();}
+$("otherAiBtn2").addEventListener("click",()=>{closeAll();$("otherAiBtn").click();});
 ["sampleBtn","clearBtn"].forEach(id=>$(id).addEventListener("click",()=>{$("sessPop").hidden=true;$("sessBtn").setAttribute("aria-expanded","false");}));
 })();</script>
 </body>
