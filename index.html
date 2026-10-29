@@ -1561,7 +1561,17 @@ function vaultSave(){
   list.unshift({id:curId,ts:Date.now(),title,n:vendors.length,state:snap(),manual:keep});
   LS.set("kqc-vault",list.slice(0,SESS_MAX));LS.set("kqc-cur",curId);updateVaultCnt();try{renderSessBtn();}catch{}
 }
-function download(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:type||"text/plain"}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
+const IN_ART=!!(window.claude&&window.claude.use);
+function download(name,text,type){
+  if(IN_ART){
+    claude.use("downloads").then(d=>{
+      if(!d){toast("이 화면에서는 파일 저장을 쓸 수 없습니다.");return;}
+      const fn=/\.doc$/.test(name)?name.replace(/\.doc$/,".html"):name;
+      d.save({filename:fn,data:text instanceof Blob?text:new Blob([text],{type:type||"text/plain"})}).catch(e=>{if(!e||e.code!=="declined")toast("저장하지 못했습니다.");});
+    }).catch(()=>toast("이 화면에서는 파일 저장을 쓸 수 없습니다."));
+    return;
+  }
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:type||"text/plain"}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
 function importJobs(text){
   let d;try{d=JSON.parse(text);}catch{return 0;}
   const arr=Array.isArray(d)?d:[d];let n=0;const list=vaultList();
@@ -1870,7 +1880,7 @@ async function markedCanvas(f,ms,max){
 }
 async function saveMarked(f,ms){
   let c;try{c=await markedCanvas(f,ms,0);}catch{toast("이미지를 불러오지 못했습니다.");return;}
-  c.toBlob(b=>{if(!b)return;const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=`${f.name.replace(/\.[^.]+$/,"")}_오류표시.png`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);toast("오류 표시가 들어간 이미지를 저장했습니다.");},"image/png");
+  c.toBlob(b=>{if(!b)return;download(`${f.name.replace(/\.[^.]+$/,"")}_오류표시.png`,b,"image/png");toast("오류 표시가 들어간 이미지를 저장했습니다.");},"image/png");
 }
 function openMarks(fid){
   if(!files.length){toast("먼저 견적서를 올리세요.");return;}
@@ -2090,6 +2100,7 @@ $("sheets").addEventListener("input",e=>{const k=e.target.dataset&&e.target.data
 $("sheets").addEventListener("keydown",e=>{if(e.target.dataset&&e.target.dataset.ed==="title"&&e.key==="Enter")e.preventDefault();});
 $("pvCopy").onclick=async()=>toast(await copyText(reportText())?"검토 결과를 복사했습니다.":"복사가 막혀 있습니다.");
 $("pvPdf").onclick=()=>{
+  if(IN_ART){toast("이 화면에서는 인쇄가 막혀 있어 파일로 저장합니다. 저장한 파일을 열어 인쇄(PDF)하세요.");$("pvDoc").click();return;}
   document.body.classList.add("pv-print");
   const done=()=>{document.body.classList.remove("pv-print");window.removeEventListener("afterprint",done);};
   window.addEventListener("afterprint",done);
@@ -2145,7 +2156,7 @@ async function ntsLookup(){
     isExample=false;render();saveDraft();
     ntsMsg(`${ok}곳 조회 완료 (${at} 기준). 신규 개업은 반영에 1~2일 걸릴 수 있습니다.`,"ok");
   }catch(e){
-    ntsMsg((e&&e.message&&!/Failed to fetch|NetworkError|Load failed/i.test(e.message))?e.message:"국세청 서버에 연결하지 못했습니다. 네트워크·인증키를 확인하거나 아래 홈택스 링크로 직접 조회하세요.","bad");
+    ntsMsg(IN_ART&&/Failed to fetch|NetworkError|Load failed/i.test(String(e&&e.message))?"claude.ai 링크 화면에서는 국세청 조회가 막혀 있습니다. 내려받은 HTML 파일에서 사용하거나 홈택스로 직접 조회하세요.":(e&&e.message&&!/Failed to fetch|NetworkError|Load failed/i.test(e.message))?e.message:"국세청 서버에 연결하지 못했습니다. 네트워크·인증키를 확인하거나 아래 홈택스 링크로 직접 조회하세요.","bad");
   }finally{btn.disabled=false;}
 }
 $("ntsBtn").onclick=ntsLookup;
@@ -2272,7 +2283,7 @@ async function copyTable(){
 $("copyBtn").onclick=async()=>toast(await copyText(reportText())?"검토 결과 전체를 복사했습니다.":"복사가 막혀 있습니다. 화면을 직접 선택해 복사하세요.");
 $("copyCoreBtn").onclick=async()=>toast(await copyText(coreText())?"4대 점검 결과를 복사했습니다.":"복사가 막혀 있습니다.");
 $("copyTblBtn").onclick=copyTable;
-$("printBtn").onclick=()=>{try{window.print();}catch{toast("이 화면에서는 인쇄가 막혀 있습니다.");}};
+$("printBtn").onclick=()=>{if(IN_ART){toast("이 화면에서는 인쇄가 막혀 있습니다. ‘텍스트 파일로 저장’ 또는 서식 미리보기의 파일 저장을 쓰세요.");return;}try{window.print();}catch{toast("이 화면에서는 인쇄가 막혀 있습니다.");}};
 
 /* ================= 탭 · 세그먼트 ================= */
 const TABS={review:["견적서 검토","견적서와 비교견적서를 올리면 건국대 구매계약업무요강의 금액 구간별 절차와 비교견적·사업자·선지급·부가세를 점검합니다."],preview:["서식 미리보기","견적서 검토 결과를 서식(견적서 검토 결과서)으로 미리 보고 PDF·Word로 저장합니다."],checklist:["감사 체크리스트","건국대 구매계약업무요강과 보조금 감사 기준에서 견적·계약·지급·증빙 단계별로 보는 항목입니다."],cases:["적발 사례 해설","감사에서 반복해서 지적되는 견적 관련 부실 유형과 미리 갖출 서류입니다."]};
