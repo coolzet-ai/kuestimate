@@ -606,10 +606,10 @@ label.f,div.f{display:flex;flex-direction:column;gap:4px;font-size:12px;color:va
 .sheet .signs{display:flex;flex-direction:column;align-items:flex-end;gap:10px;margin-top:22px}
 .sheet .sign{display:grid;grid-template-columns:auto minmax(90px,auto) auto;gap:18px;font-family:var(--f-body);font-weight:700}
 .sheet .stamp{position:absolute;top:18px;right:18px;font-family:var(--f-body);font-weight:900;font-size:12px;color:#c8323f;border:2px solid #c8323f;border-radius:6px;padding:2px 8px;transform:rotate(4deg);letter-spacing:.1em;background:#fff}
-.sheet .att-grid td{height:250px;vertical-align:top;padding:6px}
+.sheet .att-grid td{height:600px;vertical-align:top;padding:6px}
 .sheet .slot{display:flex;flex-direction:column;gap:4px;height:100%}
-.sheet .slot .img{flex:1;display:grid;place-items:center;min-height:190px;overflow:hidden}
-.sheet .slot .img img{max-width:100%;max-height:230px;object-fit:contain}
+.sheet .slot .img{flex:1;display:grid;place-items:center;min-height:540px;overflow:hidden}
+.sheet .slot .img img{max-width:100%;max-height:560px;object-fit:contain}
 .sheet .slot .empty{color:#b5b5b5;font-family:var(--f-body);font-size:12px;border:1px dashed #cfcfcf;width:100%;height:100%;display:grid;place-items:center}
 .sheet .cap{font-size:11px;text-align:center;font-family:var(--f-body);color:#333;min-height:1.4em}
 @media print{
@@ -715,6 +715,109 @@ tr.ck-flash{animation:ckfl 1.6s ease}
 .ml-list label{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:8px;font-weight:400!important;font-size:13px}
 .ml-list input[type=checkbox]{flex:none;width:auto;margin:3px 0 0}
 .ml-sub small{font-weight:400;color:#777;display:inline}
+.np-steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:14px;font-size:13.5px;line-height:1.55}
+.np-nums{font-family:var(--f-mono,monospace);background:#f3f7f4;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:6px 0;max-height:120px;overflow:auto}
+.np-steps textarea{width:100%;margin-top:6px;box-sizing:border-box;font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px}
+
+.cf-steps{margin:0 0 12px;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:14px;line-height:1.55}
+.cf-copy{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+.cf-copy .primary{font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;background:var(--green);color:#fff;border:1px solid var(--green);cursor:pointer}
+.cf-n{font-family:var(--f-mono,monospace);font-size:12px;color:var(--muted)}
+.cf-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-bottom:12px}
+.cf-o{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:start;padding:12px;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:8px;text-decoration:none;color:inherit;background:#fff}
+.cf-o.on{background:#e4f1ea}
+.cf-o:hover{border-color:var(--green)}
+.cf-o b{display:block;font-size:14.5px}.cf-o small{display:block;font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.cf-o i{font-style:normal;font-size:18px;line-height:1}
+.cf-h{margin:12px 0 6px;font-size:12.5px;color:var(--muted)}
+.cf-in{width:100%;box-sizing:border-box;min-height:150px;font:inherit;font-size:13.5px;padding:10px;border:1px solid var(--line);border-radius:8px;resize:vertical}
+.mv-inc{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;margin-right:auto;cursor:pointer}
+
+.kinfo{margin:0 0 14px}
+.kinfo .kbody{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 14px;align-items:start}
+.kinfo .krow{display:contents}
+.kinfo .f{margin:0}
+.kinfo .kbody>.f select,.kinfo .kbody .f input{width:100%;box-sizing:border-box}
+#ckSection[hidden]{display:none}
+
+mark{background:none;color:inherit;border-radius:3px;padding:0 2px;font-weight:700}
+mark.hn{background:#fff2b8;color:#5a4300}
+mark.hd{background:#dbe9ff;color:#143e7a}
+mark.hb{background:#e8e3f7;color:#3d2b7a;font-family:var(--f-mono,monospace);font-weight:600}
+mark.hr{background:#e2f1e8;color:#0b5a32}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0 0 10px}
+.keys .kt{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:#fff;min-width:0}
+.keys .kt small{display:block;color:var(--muted);font-size:11.5px}
+.keys .kt b{display:block;font-size:17px;line-height:1.3;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.keys .kt em{display:block;font-style:normal;font-size:11.5px;color:#555;margin-top:1px}
+.keys .kt.bad{border-color:#e7b3ac;background:#fdf1ef}.keys .kt.bad b{color:#a52a1e}
+.keys .kt.warn{border-color:#ecd28a;background:#fff8e3}.keys .kt.warn b{color:#8a5a00}
+.keys .kt.ok b{color:#0b6e3d}
+.keys .seg-bar{grid-column:1/-1;display:flex;height:12px;border-radius:6px;overflow:hidden;background:#e9ecea}
+.keys .seg-bar i{display:block;height:100%}
+.keys .seg-lg{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:#555;margin-top:-2px}
+.keys .seg-lg span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;background:var(--c)}
+
+/* ===== 조밀 보기: 줄간격·여백 최소화 ===== */
+body{line-height:1.4}
+.kcard header{padding-top:9px;padding-bottom:7px}
+.kcard .kbody{padding-top:8px;padding-bottom:10px}
+.kcol{gap:10px}.kgrid{gap:12px}
+.f{gap:2px}
+.core ul,.cc ul{line-height:1.35}
+.cc li,.core li{margin:1px 0;line-height:1.35}
+.cc h4{margin-bottom:4px}
+.flist{gap:3px}
+.flist button{padding:5px 8px;line-height:1.3}
+.flist small{line-height:1.3;font-size:11.5px}
+.vbar{padding-top:8px;padding-bottom:8px}
+.kflag .bars{gap:3px}
+.kflag button.bar{padding:1px 6px}
+.ai-sum,.flags li{line-height:1.4}
+.ck td,.ck th,.vt td,.vt th{padding-top:5px;padding-bottom:5px}
+.ck td{line-height:1.35}
+.ck small,.vt small{line-height:1.25}
+.summary,.lead{line-height:1.4}
+.mdl-body,.te-b{line-height:1.45}
+.cf-steps{line-height:1.45;gap:2px}
+.sec{margin-top:14px;margin-bottom:6px}
+.ml-list label{line-height:1.35}
+.optbar{padding-top:6px;padding-bottom:6px}
+
+/* ===== 결과 카드 머리줄·보완 필요 칩 한 줄 ===== */
+.kcard.kout>header{flex-wrap:nowrap;gap:8px}
+.kcard.kout>header h2{white-space:nowrap}
+.kcard.kout>header .legend{display:flex;flex-wrap:nowrap;gap:4px;margin:0 0 0 auto;padding:0;border:0}
+.kcard.kout>header .legend .st{padding:2px 8px;font-size:12px;white-space:nowrap}
+.kcard.kout>header .tag-ex{flex:none}
+.vrow{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+.vbar{flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:8px;padding:5px 10px!important;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:6px}
+.vbar b{font-size:15px!important;line-height:1.2}
+.vbar span{overflow:hidden;text-overflow:ellipsis}
+.ck-tg{flex:none;font:inherit;font-size:12.5px;font-weight:700;color:#0b6e3d;background:#fff;border:1px solid #0b6e3d;border-radius:6px;padding:5px 10px;cursor:pointer}
+.ck-tg:hover{background:#e9f4ee}
+@media (max-width:640px){.kcard.kout>header{flex-wrap:wrap}.kcard.kout>header .legend{margin-left:0;flex-wrap:wrap}.vbar span{display:none}}
+.pg{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);z-index:30;width:min(360px,calc(100% - 32px));background:var(--paper);border:1px solid var(--green);border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.18);padding:12px 14px;transition:opacity .3s}
+.pg.out{opacity:0}.pg.fail{border-color:#c0392b}
+.pg-h{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:8px}.pg-h span{color:var(--muted);font-size:12px}
+.pg-bar{height:7px;border-radius:5px;background:var(--line);overflow:hidden}.pg-bar i{display:block;height:100%;background:var(--green);border-radius:5px;transition:width .35s}
+.pg.fail .pg-bar i{background:#c0392b}
+.pg ol{list-style:none;margin:9px 0 0;padding:0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.pg li.d{color:var(--green)}.pg li.a{color:var(--ink);font-weight:700}
+.rp-bar{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px}.rp-bar .sp{flex:1}.rp-bar button{font:inherit;border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:4px 10px;cursor:pointer}.rp-bar button:disabled{opacity:.4}
+.rp-view{max-height:62vh;overflow:auto}
+.ck-ft{display:flex;flex-direction:column;gap:6px}.ck-row{display:flex;flex-wrap:wrap;gap:6px}
+.ck-ft button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.ck-ft button em{font-style:normal;color:var(--muted);margin-left:2px}
+.ck-ft button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}.ck-ft button[aria-pressed="true"] em{color:#dfeee6}
+.ck-ft .bd{font-style:normal;background:#d62839;color:#fff;border-radius:9px;font-size:11px;padding:0 6px;margin-left:5px}
+.rp-bar label{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.ck td.no,.ck-t td.no{white-space:nowrap}
+.mv2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.mv2-c{min-width:0;display:flex;flex-direction:column;gap:6px}
+.mv2-c h4{margin:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mv2-c h4 small{color:var(--muted);font-weight:400}
+.mv2-c .mv-view{max-height:50vh}.mv2-c .mv-list{max-height:20vh}
+@media (max-width:760px){.mv2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -878,11 +981,9 @@ details.more[open] summary{margin-bottom:8px}
   <details class="mn" id="scopeMenu"><summary class="btn">검토 항목 ▾</summary><div class="mn-list" id="scopeList"></div></details>
   <button class="link" id="otherAiBtn" title="ChatGPT·Gemini 등 다른 AI에 붙여 넣을 요청문">✎ 다른 AI용 프롬프트</button>
 </div>
-<div class="kgrid">
-    <div class="kcol">
-      <section class="kcard" id="inPane">
-        <header><span class="kstep">00</span><h2>계약 정보</h2><span class="sub">요강 기준 판정에 쓰입니다</span></header>
-        <div class="kbody">
+<section class="kcard kinfo" id="inPane">
+  <header><span class="kstep">00</span><h2>계약 정보 · 일정 · 지급</h2><span class="sub">요강 기준 판정에 쓰입니다</span></header>
+  <div class="kbody">
           <div class="f"><span class="fl">계약 유형</span>
             <div class="seg" id="kind" role="group" aria-label="계약 유형">
               <button data-v="물품" aria-pressed="true">물품</button>
@@ -893,11 +994,7 @@ details.more[open] summary{margin-bottom:8px}
           <label class="f">계약 방법 (요강 제5조·제6조)<select id="fMethod"><option value="">선택</option><option value="복수견적">복수견적 (홈페이지 접수)</option><option value="경쟁입찰">경쟁입찰 (구매부서)</option><option value="나라장터·전자구매대행">나라장터·전자구매대행</option><option value="수의계약">수의계약 (업체지정사유서)</option><option value="단일견적">단일견적</option></select><span class="hint">추정금액 = 공급가액 + 부가세(합계)</span></label>
           <label class="f">단일견적 사유 (요강 제3조④)<select id="fSingle"><option value="">해당 없음</option><option value="list">열거 사유 (박물류·매체광고·출장 교통/숙박/음식·공연·특강·출판부·교육탐방·시험대비반·농축수산물·국가기관)</option><option value="sec">보안성 요구 구매 · 외부기관 공동계약 (7·9호)</option><option value="hard">품목 특성상 복수견적 곤란 (위임전결 결재)</option></select></label>
           <input type="hidden" id="fLimit" value="20,000,000">
-        </div>
-      </section>
-      <section class="kcard">
-        <header><span class="kstep">01</span><h2>일정 · 지급</h2></header>
-        <div class="kbody">
+        
           <div class="krow">
             <label class="f">계약 체결일(예정)<input type="date" id="fContract"></label>
             <label class="f">납품·검수일<input type="date" id="fInspect"></label>
@@ -906,9 +1003,12 @@ details.more[open] summary{margin-bottom:8px}
           </div>
           <label class="f">보조사업자 부가세 환급<select id="fVatRefund"><option value="">모름</option><option value="yes">환급 가능(과세사업자)</option><option value="no">환급 불가(면세·비영리)</option></select></label>
         </div>
-      </section>
+</section>
+<div class="kgrid">
+    <div class="kcol">
+      
       <section class="kcard">
-        <header><span class="kstep">02</span><h2>견적서 첨부</h2><span class="sub" id="inCount">0개 파일</span></header>
+        <header><span class="kstep">01</span><h2>견적서 첨부</h2><span class="sub" id="inCount">0개 파일</span></header>
         <div class="kbody">
           <div class="drop-zone" id="dropZone">
             <b>견적서와 비교견적서를 끌어다 놓으세요</b>
@@ -922,12 +1022,12 @@ details.more[open] summary{margin-bottom:8px}
           </div>
           <div class="shot-tray" id="shotTray" hidden style="margin:0">
             <div class="shot-list" id="shotList"></div>
-            <div class="shot-act"><button id="markBtn" hidden>크게 보기</button><button id="shotClear">모두 지우기</button><span class="meta" id="shotInfo"></span></div>
+            <div class="shot-act"><button id="markBtn" hidden>크게 보기</button><button id="repBtn" title="A4 세로, 한 쪽에 견적서 2장과 오류 내용을 담은 결과서 이미지">결과서 이미지</button><button id="shotClear">모두 지우기</button><span class="meta" id="shotInfo"></span></div>
           </div>
         </div>
       </section>
       <section class="kcard">
-        <header><span class="kstep">03</span><h2>글로 붙여넣기</h2><span class="sub">선택</span></header>
+        <header><span class="kstep">02</span><h2>글로 붙여넣기</h2><span class="sub">선택</span></header>
         <div class="kbody">
           <textarea class="paste-t" id="fText" rows="4" placeholder="엑셀·한글 견적서 내용을 그대로 붙여 넣어도 AI가 읽습니다."></textarea>
         </div>
@@ -937,10 +1037,10 @@ details.more[open] summary{margin-bottom:8px}
 
     <div class="kcol">
       <section class="kcard kout">
-        <header><span class="kstep">05</span><h2>결과 · 핵심 4대 점검</h2><span class="tag-ex" id="exTag">예시</span></header>
-        <div class="legend"><button type="button" class="st ok" data-st="ok" title="적합 항목 보기">적합</button><button type="button" class="st warn" data-st="warn" title="주의 항목 보기">주의</button><button type="button" class="st bad" data-st="bad" title="부적합 항목 보기">부적합</button><button type="button" class="st chk" data-st="chk" title="확인 필요 항목 보기">확인 필요</button></div>
+        <header><span class="kstep">03</span><h2>결과 · 핵심 4대 점검</h2><div class="legend"><button type="button" class="st ok" data-st="ok" title="적합 항목 보기">적합</button><button type="button" class="st warn" data-st="warn" title="주의 항목 보기">주의</button><button type="button" class="st bad" data-st="bad" title="부적합 항목 보기">부적합</button><button type="button" class="st chk" data-st="chk" title="확인 필요 항목 보기">확인 필요</button></div><span class="tag-ex" id="exTag">예시</span></header>
         <div class="res" id="res" aria-live="polite">
-          <div class="vbar" id="vbar"></div>
+          <div class="vrow"><div class="vbar" id="vbar"></div><button type="button" class="ck-tg" id="ckToggle" aria-expanded="false" aria-controls="ckSection">상세 보기 ▾</button></div>
+          <div class="keys" id="keyStrip"></div>
           <details class="fold" id="resFold"><summary><span class="more">세부 보기</span><span class="less">접기</span></summary>
           <div class="core" id="core"></div>
           <div class="ai-sum" id="aiSum"></div>
@@ -949,7 +1049,7 @@ details.more[open] summary{margin-bottom:8px}
         </div>
       </section>
       <section class="kcard kflag" id="flagCard">
-        <header><span class="kstep">06</span><h2>지적 사항</h2><span class="tot"><b id="tot">0</b>건</span></header>
+        <header><span class="kstep">04</span><h2>지적 사항</h2><span class="tot"><b id="tot">0</b>건</span></header>
         <p class="tsub" id="totSub"></p>
         <div class="chips cat-f" id="catChips" role="group" aria-label="영역별 지적 보기"></div>
         <div class="bars" id="stBars"></div>
@@ -976,6 +1076,7 @@ details.more[open] summary{margin-bottom:8px}
         <button id="copyTblBtn" title="업체별 비교표를 표로 복사합니다. 한글·워드에는 표로, 엑셀에는 칸별로 들어갑니다">비교표 복사</button>
         <button id="saveTxtBtn">텍스트 파일로 저장</button>
         <button id="saveJsonBtn">작업 파일(JSON)로 저장</button>
+        <button id="repImgBtn" title="A4 세로 결과서 서식 이미지(JPG)로 저장">검토 결과서 이미지</button>
         <button id="printBtn">인쇄</button>
       </div></details>
     </div>
@@ -996,6 +1097,7 @@ details.more[open] summary{margin-bottom:8px}
     <a class="ai-link" href="https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml&amp;menuCd=search&amp;searchInfo3338847872" target="_blank" rel="noopener" title="국세청 홈택스 · 상담ㆍ불복ㆍ고충ㆍ제보ㆍ기타 &gt; 사업자상태 &gt; 사업자상태 조회(사업자등록번호)">홈택스 사업자등록상태조회</a>
   </div>
 
+  <div id="ckSection" hidden>
   <h2 class="sec">감사 점검 결과</h2>
   <p class="summary" id="ckSummary"></p>
   <div class="tbl-wrap"><table class="ck ck-t">
@@ -1003,6 +1105,7 @@ details.more[open] summary{margin-bottom:8px}
     <tbody id="ckBody"></tbody>
   </table></div>
   <div class="notes" id="notes" hidden><h4>담당자가 직접 확인할 사항</h4><ul id="notesList"></ul></div>
+  </div>
 </section>
 
 <!-- ============ 서식 미리보기 ============ -->
@@ -1023,10 +1126,7 @@ details.more[open] summary{margin-bottom:8px}
   <h2 class="sec">감사 체크리스트</h2>
   <p class="lead">보조금 회계감사에서 견적·계약·지급 단계별로 실제 지적이 잦은 항목입니다. 검토 탭의 판정이 그대로 반영되며, 여기서 바꾼 판정도 검토 결과에 반영됩니다.</p>
   <div class="filter">
-    <div class="seg" id="ckFilter">
-      <button data-v="all" aria-pressed="true">전체 항목</button>
-      <button data-v="issue" aria-pressed="false">문제·미확인 항목만</button>
-    </div>
+    <div class="ck-ft" id="ckChips"></div>
     <span class="meta" id="ckCount"></span>
   </div>
   <div class="tbl-wrap"><table class="ck ck-t">
@@ -1098,7 +1198,7 @@ const ALLCHECKS=[
  ["m2","M","부가세가 공급가액의 10%","면세 품목이 아닌데 10%와 다르면 계산 오류 또는 조작입니다."],
  ["m3","M","부가세 포함·별도 표기 명확","표기가 없으면 집행액이 부가세만큼 달라질 수 있습니다."],
  ["m4","M","환급 가능한 부가세를 보조금으로 집행하지 않음","보조사업자가 매입세액 공제를 받을 수 있으면 부가세는 보조금 집행 대상에서 빼는 것이 원칙입니다."],
- ["m5","M","‘일식’·‘일체’ 같은 뭉뚱그린 산출 내역 없음","세부 내역이 없으면 단가 적정성을 검증할 수 없습니다."],
+ ["m5","M","‘일식’·‘일체’ 같은 뭉뚱그린 산출 내역 없음","세부 내역이 없으면 단가 적정성을 검증할 수 없습니다. 상세 견적이 있어도 ‘식’ 줄이 공급가의 30% 이상이면 주의, 전부 ‘식’이면 부적합으로 봅니다."],
  ["m6","M","단가가 시중가·조달가 대비 과다하지 않음","조달청 가격, 온라인 최저가와 비교한 기록이 있으면 좋습니다."],
  ["m7","M","견적 유효기간 안에 계약","유효기간이 지난 견적으로 계약하면 견적을 새로 받아야 합니다."],
  ["m8","M","예정가격(거래실례가·원가·견적 조사) 작성 (제10조)","2,000만원 이상은 예정가격조서를 작성해 전결권자의 가격사정을 받습니다. 미만이면 추정금액을 예정가격으로 봅니다."],
@@ -1210,6 +1310,22 @@ function rules(){
     if(v.items?.length&&s!=null){const isum=v.items.reduce((a,i)=>a+(num(i.amount)??0),0);if(isum&&Math.abs(isum-s)>1)mErr.push(`${v.name||"업체"}: 품목 합 ${won(isum)} ≠ 공급가 ${won(s)}`);
       v.items.forEach(i=>{const q=num(i.qty),u=num(i.unit),a=num(i.amount);if(q!=null&&u!=null&&a!=null&&Math.abs(q*u-a)>1)mErr.push(`${v.name||"업체"} ‘${i.name}’: ${q}×${won(u)} ≠ ${won(a)}`);});}});
   if(mErr.length)put("m1","bad",mErr.join(" / "));else if(vendors.some(v=>num(v.supply)!=null&&num(v.total)!=null))put("m1","ok","공급가액·부가세·합계 계산이 맞습니다.");
+  // m5 ‘식’ 산출 내역
+  {const isLump=i=>/^(식|일식|set|세트|lot)$/i.test(String(i.uom||"").trim())||/일식|일체|일괄/.test(String(i.name||""));
+   const bad5=[],warn5=[],ok5=[];
+   vendors.forEach(v=>{const its=(v.items||[]).filter(i=>String(i.name||"").trim()||num(i.amount)!=null);if(!its.length)return;
+     const nm=v.name||"업체",L=its.filter(isLump);
+     const amtOf=i=>num(i.amount)??((num(i.qty)??0)*(num(i.unit)??0));
+     const tot=its.reduce((a,i)=>a+amtOf(i),0)||num(v.supply)||0,ls=L.reduce((a,i)=>a+amtOf(i),0);
+     const lines=L.map(i=>`‘${i.name||"품목"}’ ${won(amtOf(i))}원`).join(", ");
+     if(!L.length){ok5.push(nm);return;}
+     if(L.length===its.length)bad5.push(`${nm}: 전체가 ‘식’(${lines})뿐이라 수량·단가 내역이 없습니다. 품목별 수량·단가를 받으세요`);
+     else{const sh=tot?ls/tot:0,pc=Math.round(sh*100);
+       if(sh>=0.3)warn5.push(`${nm}: ‘식’ ${L.length}건이 공급가의 ${pc}%입니다(${lines}). 세부 산출 근거를 요청하세요`);
+       else warn5.push(`${nm}: 세부 내역 중 ‘식’ ${L.length}건(${lines}, ${pc}%) — 비중은 작지만 수량·단가 근거를 확인하세요`);}});
+   if(bad5.length)put("m5","bad",bad5.concat(warn5).join(" / "));
+   else if(warn5.length)put("m5",warn5.some(w=>/공급가의/.test(w))?"warn":"chk",warn5.join(" / "));
+   else if(ok5.length)put("m5","ok","품목별 수량·단가가 적혀 있고 ‘식’ 표기가 없습니다.");}
   // m2
   const vErr=[],vOk=[];vendors.forEach(v=>{const s=num(v.supply),t=num(v.vat);if(s==null||t==null)return;if(t===0){if(v.vatLabel!=="별도")vErr.push(`${v.name||"업체"}: 부가세 0원(면세 품목인지 확인)`);return;}const d=Math.abs(t-s/10);if(d>Math.max(10,s*0.001))vErr.push(`${v.name||"업체"}: 부가세 ${won(t)}원, 10%는 ${won(s/10)}원`);else vOk.push(v.name);});
   if(vErr.length)put("m2","warn",vErr.join(" / "));else if(vOk.length)put("m2","ok","부가세가 공급가액의 10%입니다.");
@@ -1251,7 +1367,7 @@ function render(){
   $("exTag").hidden=!isExample;
   $("bcLimit").textContent=`${(limitVal()/10000).toLocaleString("ko-KR")}만 원`;
   // 4대 점검
-  $("core").innerHTML=CORE.map(c=>{const s=worst(c.ids);return `<div class="cc ${s}"><h4>${c.t}<span class="st ${s}">${ST[s]}</span></h4><ul>${c.ids.filter(i=>results[i]&&results[i].r&&!["none","na"].includes(results[i].s)).map(i=>`<li>${esc(results[i].r)}</li>`).join("")||"<li>판정할 정보가 아직 없습니다.</li>"}</ul></div>`;}).join("");
+  $("core").innerHTML=CORE.map(c=>{const s=worst(c.ids);return `<div class="cc ${s}"><h4>${c.t}<span class="st ${s}">${ST[s]}</span></h4><ul>${c.ids.filter(i=>results[i]&&results[i].r&&!["none","na"].includes(results[i].s)).map(i=>`<li>${hl(results[i].r)}</li>`).join("")||"<li>판정할 정보가 아직 없습니다.</li>"}</ul></div>`;}).join("");
   const all=CHECKS.map(([id])=>results[id].s);
   const cnt=k=>all.filter(s=>s===k).length;
   const nb=cnt("bad"),nw=cnt("warn"),nc=cnt("chk")+cnt("none");
@@ -1259,6 +1375,7 @@ function render(){
   vb.className="vbar "+vk;
   vb.innerHTML=`<b>${{bad:"보완 필요",warn:"조건부 적합",chk:"확인 필요",ok:"적합"}[vk]}</b><span>부적합 ${nb}건 · 주의 ${nw}건 · 미확인 ${nc}건${vendors.length?` · 업체 ${vendors.length}곳`:""}</span>`;
   $("aiSum").textContent=aiSummary;
+  renderKey(nb,nw,nc,cnt("ok"));
   $("flags").innerHTML=aiFlags.map(f=>`<li>${esc(f)}</li>`).join("");
   // 점수판
   $("tot").textContent=nb+nw;
@@ -1275,24 +1392,57 @@ const stSel=s=>flagSt?(flagSt==="chk"?(s==="chk"||s==="none"):s===flagSt):(s==="
 function renderFlagList(){
   $("flagHd").textContent=(flagSt?`${ST[flagSt]} 항목`:"부적합·주의 항목")+(flagCat?` · ${CATS[flagCat]}`:"");
   const L=CHECKS.map(([id,c,t],i)=>({id,c,t,n:i+1,r:results[id]})).filter(x=>stSel(x.r.s)&&(!flagCat||x.c===flagCat)).sort((a,b)=>RANK[b.r.s]-RANK[a.r.s]||a.n-b.n);
-  $("flagList").innerHTML=L.length?L.map(x=>`<li><button type="button" data-goto="ck-${x.id}"><span class="st ${x.r.s}">${ST[x.r.s]}</span><span><b>${x.n}.</b> ${esc(x.t)}${x.r.r?`<small>${esc(x.r.r)}</small>`:""}</span></button></li>`).join(""):'<li style="border:0;padding:6px 4px;font-size:13px;color:#555">해당 항목이 없습니다.</li>';
+  $("flagList").innerHTML=L.length?L.map(x=>`<li><button type="button" data-goto="ck-${x.id}"><span class="st ${x.r.s}">${ST[x.r.s]}</span><span><b>${x.n}.</b> ${esc(x.t)}${x.r.r?`<small>${hl(x.r.r)}</small>`:""}</span></button></li>`).join(""):'<li style="border:0;padding:6px 4px;font-size:13px;color:#555">해당 항목이 없습니다.</li>';
 }
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-st]");if(!b)return;flagSt=b.dataset.st===flagSt?"":b.dataset.st;flagCat="";$("flagFold").open=true;render();$("flagCard").scrollIntoView({behavior:"smooth",block:"nearest"});});
+$("ckToggle").addEventListener("click",()=>{const s=$("ckSection"),show=s.hidden;s.hidden=!show;$("ckToggle").setAttribute("aria-expanded",String(show));$("ckToggle").textContent=show?"접기 ▴":"상세 보기 ▾";if(show)s.scrollIntoView({behavior:"smooth",block:"start"});});
 $("catChips").addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;flagCat=b.dataset.cat===flagCat?"":b.dataset.cat;$("flagFold").open=true;render();});
-document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-goto]");if(!b)return;const t=document.getElementById(b.dataset.goto);if(!t)return;t.scrollIntoView({behavior:"smooth",block:"center"});t.classList.remove("ck-flash");void t.offsetWidth;t.classList.add("ck-flash");});
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-goto]");if(!b)return;if($("ckSection").hidden)$("ckToggle").click();const t=document.getElementById(b.dataset.goto);if(!t)return;t.scrollIntoView({behavior:"smooth",block:"center"});t.classList.remove("ck-flash");void t.offsetWidth;t.classList.add("ck-flash");});
+function hl(t){
+  return esc(t)
+   .replace(/(\d{3}-\d{2}-\d{5})/g,'<mark class="hb">$1</mark>')
+   .replace(/(20\d\d\. \d\d\. \d\d\.)/g,'<mark class="hd">$1</mark>')
+   .replace(/(\d{1,3}(?:,\d{3})+원|\d{1,3}(?:,\d{3})*만원|\d+일|\d+회|\d+곳)/g,'<mark class="hn">$1</mark>')
+   .replace(/(제\d+조[①-⑩]?(?:[·]제\d+조(?:의\d+)?)?(?:의\d+)?)/g,'<mark class="hr">$1</mark>');
+}
+function renderKey(nb,nw,nc,nok){
+  const main=vendors.find(v=>v.role==="main"),cmp=vendors.filter(v=>v!==main);
+  const tot=v=>v&&(num(v.total)??(num(v.supply)!=null?num(v.supply)+(num(v.vat)||0):null));
+  const amt=tot(main),lim=limitVal();
+  const T=[];
+  T.push(`<div class="kt${amt!=null&&amt>=lim?" warn":""}"><small>추정금액(부가세 포함)</small><b>${amt!=null?won(amt)+"원":"-"}</b><em>${amt==null?"금액 미확인":amt>=lim?`${(lim/10000).toLocaleString("ko-KR")}만원 이상 구간`:`${(lim/10000).toLocaleString("ko-KR")}만원 미만 구간`}</em></div>`);
+  const lows=cmp.map(tot).filter(x=>x!=null);
+  if(amt!=null&&lows.length){const lo=Math.min(...lows,amt),d=(amt-lo)/lo*100;T.push(`<div class="kt${d>0?" warn":" ok"}"><small>주 견적 vs 최저가</small><b>${d>0?"+":""}${d.toFixed(1)}%</b><em>${d>0?"비교견적이 더 쌉니다":"주 견적이 최저가"}</em></div>`);}
+  T.push(`<div class="kt"><small>견적 업체</small><b>${vendors.length}곳</b><em>비교견적 ${cmp.length}곳</em></div>`);
+  T.push(`<div class="kt${nb?" bad":nw?" warn":" ok"}"><small>부적합 · 주의</small><b>${nb} · ${nw}</b><em>확인 필요 ${nc}건</em></div>`);
+  const n=nb+nw+nc+nok||1,seg=[["bad",nb,"부적합","#a52a1e"],["warn",nw,"주의","#b9770e"],["chk",nc,"확인 필요","#14808a"],["ok",nok,"적합","#0b6e3d"]];
+  T.push(`<div class="seg-bar" role="img" aria-label="판정 분포">${seg.map(([,v,,c])=>v?`<i style="width:${v/n*100}%;background:${c}"></i>`:"").join("")}</div><div class="seg-lg">${seg.map(([,v,l,c])=>`<span style="--c:${c}">${l} ${v}</span>`).join("")}</div>`);
+  $("keyStrip").innerHTML=T.join("");
+}
 function ckRows(filter,withHow){
   let out="",last="",i=0;
   CHECKS.forEach(([id,c,t,how])=>{i++;const r=results[id];
     if(filter&&!["bad","warn","chk","none"].includes(r.s))return;
+    if(withHow){if(ckCat&&c!==ckCat)return;if(ckSt&&r.s!==ckSt)return;}
     if(c!==last){out+=`<tr class="cat-row"><td colspan="4">${CATS[c]}</td></tr>`;last=c;}
-    out+=`<tr${withHow?"":` id="ck-${id}"`}><td class="no">${i}</td><td class="it"><b>${esc(t)}</b>${withHow?`<small>${esc(how)}</small>`:""}</td><td><select class="${r.s}" data-ck="${id}" aria-label="${esc(t)} 판정">${Object.entries(ST).map(([k,l])=>`<option value="${k}"${k===r.s?" selected":""}>${l}</option>`).join("")}</select></td><td class="rs">${esc(r.r)||'<span class="dash">-</span>'}${r.src?`<br><span class="srcl">${r.src}</span>`:""}</td></tr>`;});
+    out+=`<tr${withHow?"":` id="ck-${id}"`}><td class="no">${i}</td><td class="it"><b>${esc(t)}</b>${withHow?`<small>${esc(how)}</small>`:""}</td><td><select class="${r.s}" data-ck="${id}" aria-label="${esc(t)} 판정">${Object.entries(ST).map(([k,l])=>`<option value="${k}"${k===r.s?" selected":""}>${l}</option>`).join("")}</select></td><td class="rs">${hl(r.r)||'<span class="dash">-</span>'}${r.src?`<br><span class="srcl">${r.src}</span>`:""}</td></tr>`;});
   return out;}
-let ckFilter="all";
+let ckFilter="all",ckCat="",ckSt="";
+function renderCkChips(){
+  const el=$("ckChips");if(!el)return;
+  const cc=k=>CHECKS.filter(x=>x[1]===k),bad=k=>cc(k).filter(([id])=>["bad","warn"].includes(results[id].s)).length;
+  const cats=[["","전체 보기",CHECKS.length,CHECKS.filter(([id])=>["bad","warn"].includes(results[id].s)).length],...Object.keys(CATS).map(k=>[k,CATS[k],cc(k).length,bad(k)])];
+  const sts=[["","모든 판정"],["bad","부적합"],["warn","주의"],["chk","확인 필요"],["ok","적합"]];
+  const n=s=>CHECKS.filter(([id])=>results[id].s===s).length;
+  el.innerHTML=`<div class="ck-row" role="group" aria-label="범주">${cats.map(([k,l,t,b])=>`<button type="button" data-ccat="${k}" aria-pressed="${ckCat===k}">${l} <em>${t}</em>${b?`<i class="bd">${b}</i>`:""}</button>`).join("")}</div><div class="ck-row" role="group" aria-label="판정">${sts.map(([k,l])=>`<button type="button" class="s-${k||"all"}" data-cst="${k}" aria-pressed="${ckSt===k}">${l}${k?` <em>${n(k)}</em>`:""}</button>`).join("")}</div>`;
+}
+document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("[data-ccat]"),b=e.target.closest&&e.target.closest("[data-cst]");
+  if(a){ckCat=a.dataset.ccat;renderCk();}else if(b){ckSt=b.dataset.cst===ckSt?"":b.dataset.cst;renderCk();}});
 function renderCk(){
   $("ckBody").innerHTML=ckRows(false,false);
-  $("ckBody2").innerHTML=ckRows(ckFilter==="issue",true);
+  $("ckBody2").innerHTML=ckRows(false,true)||`<tr><td colspan="4" style="padding:18px;text-align:center;color:var(--muted)">선택한 조건에 해당하는 항목이 없습니다. ‘전체 보기’를 눌러 보세요.</td></tr>`;renderCkChips();
   const iss=CHECKS.filter(([id])=>["bad","warn","chk","none"].includes(results[id].s)).length;
-  $("ckCount").textContent=`문제·미확인 ${iss}개 / 전체 ${CHECKS.length}개`;
+  {const shown=CHECKS.filter(([id,c])=>(!ckCat||c===ckCat)&&(!ckSt||results[id].s===ckSt)).length;$("ckCount").textContent=`${shown}개 표시 / 전체 ${CHECKS.length}개 · 문제·미확인 ${iss}개`;}
   const bad=CHECKS.filter(([id])=>results[id].s==="bad").map(([,,t])=>t);
   $("ckSummary").textContent=bad.length?`부적합 항목: ${bad.join(", ")}. 감사 전에 보완 서류를 갖추거나 집행을 보류하세요.`:"부적합 항목이 없습니다. ‘확인 필요’로 남은 항목은 원본 서류로 직접 확인하세요.";
   const todo=CHECKS.filter(([id])=>["chk","none"].includes(results[id].s));
@@ -1411,7 +1561,8 @@ $("camShot").onclick=async()=>{const v=$("camVideo");if(!v.videoWidth)return;con
 
 /* ================= 연결 방식 · 사용 한도 · 판독 ================= */
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch{return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}},del(k){try{localStorage.removeItem(k);}catch{}}};
-const PW_HASH="f0c757cb19ca90e8ee1b37abe21834986a38b6470fbd6255ef11527d85a83e0e";
+const PW_HASH="0feacce67aa5569084d4ce4f38dfdb15efb33b35cadf4728712ca9ad07cbf042";
+const UNLIMITED=true;                    // 이용 횟수 제한 해제
 const FREE_RUNS=3;                       // 처음 무료 횟수
 const VOUCHERS={};                       // 이용권 코드 해시 → 횟수. 관리자 화면(#admin)에서 만든 줄을 여기에 붙여 넣으세요.
 const LOG_ENDPOINT="";                   // 이용 기록을 받을 주소(선택). 비워 두면 이 브라우저에만 기록합니다.
@@ -1458,8 +1609,8 @@ document.addEventListener("click",e=>{
 /* ---------- 사용 한도(무료 · 이용권 · 팀 암호) ---------- */
 const getU=()=>Object.assign({free:0,credits:0,team:false,used:[]},LS.get("kqc-use",{}));
 const setU=u=>LS.set("kqc-use",u);
-function remaining(){const u=getU();return u.team?Infinity:Math.max(0,FREE_RUNS-u.free)+u.credits;}
-function consume(){const u=getU();if(u.team)return;if(u.free<FREE_RUNS)u.free++;else if(u.credits>0)u.credits--;setU(u);}
+function remaining(){const u=getU();return (UNLIMITED||u.team)?Infinity:Math.max(0,FREE_RUNS-u.free)+u.credits;}
+function consume(){const u=getU();if(UNLIMITED||u.team)return;if(u.free<FREE_RUNS)u.free++;else if(u.credits>0)u.credits--;setU(u);}
 
 /* ---------- 상단 연결·사용 바 ---------- */
 function renderBasis(){
@@ -1493,7 +1644,8 @@ function renderConn(){
   const noAI=(m==="rules")||cls.includes("off");
   const tb=$("tmBtn");if(tb){tb.classList.toggle("alert",noAI);$("tmWarn").hidden=!noAI;}
   const us=$("useState"),u=getU(),gated=(m==="account"||m==="apikey");
-  if(u.team){us.textContent="팀 암호 사용 중 · 횟수 제한 없음";us.className="ai-pill on";}
+  if(UNLIMITED){us.textContent="이용 횟수 제한 없음";us.className="ai-pill on";}
+  else if(u.team){us.textContent="팀 암호 사용 중 · 횟수 제한 없음";us.className="ai-pill on";}
   else if(!gated){us.textContent="이 방식은 횟수와 무관";us.className="ai-pill";}
   else{const r=remaining();us.textContent=`무료 ${Math.max(0,FREE_RUNS-u.free)}회 · 이용권 ${u.credits}회`;us.className="ai-pill"+(r>0?" on":" off");}
 }
@@ -1532,7 +1684,7 @@ $("modeBtn").onclick=openConn;
 
 /* ---------- 이용권 · 팀 암호 ---------- */
 function openUse(){
-  const draw=()=>{const u=getU();return `<p class="mdl-note">검토하기는 처음 ${FREE_RUNS}회 무료입니다. 그다음에는 관리자가 발급한 이용권 코드(10·50·100회)를 등록하거나 팀 암호를 입력하세요. 채팅창·기본 규칙 방식은 횟수와 무관합니다.</p>
+  const draw=()=>{const u=getU();return `<p class="mdl-note">${UNLIMITED?"현재 검토하기 이용 횟수에 제한이 없습니다. 이용권 코드와 팀 암호는 필요하지 않습니다.":`검토하기는 처음 ${FREE_RUNS}회 무료입니다. 그다음에는 관리자가 발급한 이용권 코드(10·50·100회)를 등록하거나 팀 암호를 입력하세요. 채팅창·기본 규칙 방식은 횟수와 무관합니다.`}</p>
   <p id="uState"><b>현재</b> ${u.team?"팀 암호 사용 중 · 횟수 제한 없음":`무료 ${Math.max(0,FREE_RUNS-u.free)}회 남음 · 이용권 ${u.credits}회`}</p>
   <h4>이용권 코드 등록</h4><div class="mdl-row"><input type="text" id="vcIn" placeholder="KQ-10-XXXXXXXX" autocomplete="off"><button id="vcBtn">등록</button></div>
   <h4>팀 암호</h4><div class="mdl-row"><input type="password" id="pwIn2" placeholder="팀 암호" autocomplete="off"><button id="pwBtn2">${u.team?"끄기":"켜기"}</button></div>
@@ -1562,7 +1714,11 @@ function openUse(){
 $("useBtn").onclick=openUse;
 
 /* ---------- 검토 이력 ---------- */
+function showResults(){
+  try{$("resFold").open=true;$("flagFold").open=true;requestAnimationFrame(()=>{const r=$("res")||$("resFold");r&&r.scrollIntoView({behavior:"smooth",block:"nearest"});});}catch{}
+}
 function logRun(m){
+  try{$("resFold").open=true;requestAnimationFrame(()=>$("res").scrollIntoView({behavior:"smooth",block:"nearest"}));}catch{}
   const h=LS.get("kqc-hist",[]);
   const rec={ts:Date.now(),mode:m,kind,files:files.length,vendors:vendors.length,issues:CHECKS.filter(([id])=>["bad","warn"].includes(results[id]?.s)).length,chars:($("fText").value||"").length};
   h.unshift(rec);LS.set("kqc-hist",h.slice(0,200));
@@ -1587,7 +1743,7 @@ function applyState(d){
   Object.entries(d.form||{}).forEach(([k,v])=>{if($(k))$(k).value=v;});
   if(d.kind){kind=d.kind;document.querySelectorAll("#kind button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===kind?"true":"false"));}
   if(d.scope){catOn=Object.assign({P:true,V:true,M:true,C:true,E:true},d.scope);applyScope();}
-  isExample=false;render();
+  isExample=false;render();showResults();
 }
 function vaultList(){return LS.get("kqc-vault",[]);}
 function updateVaultCnt(){const el=$("vaultCnt");if(el)el.textContent=vaultList().length;}
@@ -1655,7 +1811,7 @@ function openFb(){
 function openHelp(){
   const body=`<h4>검토 기준 확인일</h4><ul>${BASIS.map(([,n,d])=>`<li>${esc(n)}: ${d?esc(d):"확인일 미입력(관리자가 입력)"}</li>`).join("")}</ul>
   <h4>사용 방법</h4><ul>
-   <li>검토하기는 처음 ${FREE_RUNS}회 무료입니다. 그다음에는 관리자가 발급한 이용권 코드(10·50·100회)를 등록하거나 팀 암호를 입력하세요. 본인 Claude 계정·API 키 방식에만 적용되고, 채팅창·기본 규칙 방식은 횟수와 무관합니다.</li>
+   <li>${UNLIMITED?"검토하기 이용 횟수에는 제한이 없습니다.":`검토하기는 처음 ${FREE_RUNS}회 무료입니다. 그다음에는 관리자가 발급한 이용권 코드(10·50·100회)를 등록하거나 팀 암호를 입력하세요. 본인 Claude 계정·API 키 방식에만 적용되고, 채팅창·기본 규칙 방식은 횟수와 무관합니다.`}</li>
    <li>본인 Claude 계정 방식의 AI 검토는 보고 있는 사람 본인의 Claude 계정으로 이루어지고 사용량도 본인 한도에서 차감됩니다.</li>
    <li>암호·사용 횟수는 가벼운 잠금입니다. 실제 접근 통제는 페이지 공유 범위로 하세요.</li>
    <li>사업자번호는 검증번호 규칙만 확인합니다. 휴·폐업 여부는 국세청 홈택스 ‘사업자등록상태조회’에서 확인한 뒤 체크하세요.</li>
@@ -1735,11 +1891,17 @@ ${txt.trim()||"(없음)"}
 3. summary: 감사관 총평 2~3문장. flags: 감사에서 지적될 가능성이 큰 부실 사항(최대 6개, 각 한 문장). 없으면 빈 배열.
 4. marks: 지적할 부분이 이미지에 실제로 보이면 그 위치를 표시하세요(최대 12개). image는 첨부 순번(1부터), box는 [x,y,w,h] — 이미지 왼쪽 위를 (0,0), 오른쪽 아래를 (1,1)로 한 0~1 비율 좌표(x,y는 박스 왼쪽 위, w,h는 너비·높이), check는 관련 점검 항목 id(없으면 ""), s는 bad|warn|chk, t는 20자 안팎의 설명. 글자 한두 줄 크기로 잡고, 위치가 불확실하면 넉넉하게 잡으세요. 이미지에서 확인되지 않는 항목은 표시하지 마세요.
 
+[문체·문장 규칙] r·summary·flags의 모든 문장은 ‘합니다체’로 통일하세요.
+- 문장 끝은 ‘~입니다/~합니다/~없습니다/~필요합니다’로만 맺고, ‘~이다/~한다/~함/~임/~음’ 같은 평서·명사형 종결과 섞지 마세요.
+- 한 문장은 80자 안쪽으로, 결론을 먼저 쓰고 근거를 뒤에 붙이세요. 연결은 ‘~지만’, ‘~므로’ 같은 합니다체 연결로 이어 씁니다(‘~나,’ ‘~며,’ 로 길게 잇지 않습니다).
+- 금액은 ‘1,234,000원’, 날짜는 ‘2026. 10. 1.’ 형식으로 쓰고, 같은 대상은 같은 말로 부르세요(견적서·업체명·사업자번호).
+- 예) 나쁨: 주소·전화는 다르나 둘 다 송파구 중대로 인근이다.  →  좋음: 주소와 전화번호는 다르지만 두 업체 모두 송파구 중대로 인근입니다.
+
 [점검 항목]
 ${ckListText()}
 
 [출력] 다른 말 없이 JSON 하나만:
-{"vendors":[{"image":[1],"role":"main|cmp","name":"","biz":"000-00-00000","ceo":"","phone":"","addr":"","bizType":"","date":"","valid":"","supply":0,"vat":0,"total":0,"vatLabel":"포함|별도|미표기","stamp":"있음|없음|불명","items":[{"name":"","qty":0,"unit":0,"amount":0}]}],"checks":{"p4":{"s":"","r":""}},"summary":"","flags":[],"marks":[{"image":1,"box":[0.1,0.2,0.3,0.05],"check":"v4","s":"bad","t":"직인 없음"}]}`;
+{"vendors":[{"image":[1],"role":"main|cmp","name":"","biz":"000-00-00000","ceo":"","phone":"","addr":"","bizType":"","date":"","valid":"","supply":0,"vat":0,"total":0,"vatLabel":"포함|별도|미표기","stamp":"있음|없음|불명","items":[{"name":"","uom":"단위(식·EA·개·m² 등, 없으면 빈칸)","qty":0,"unit":0,"amount":0}]}],"checks":{"p4":{"s":"","r":""}},"summary":"","flags":[],"marks":[{"image":1,"box":[0.1,0.2,0.3,0.05],"check":"v4","s":"bad","t":"직인 없음"}]}`;
 }
 const currentMasker=()=>($("mask").checked?maskPII($("fText").value||""):noMask($("fText").value||""));
 
@@ -1750,17 +1912,43 @@ function parseJson(t){
   if(a<0||b<=a)throw bad();
   try{return JSON.parse(t.slice(a,b+1));}catch{throw bad();}
 }
+/* AI가 섞어 쓴 ‘~이다/~한다’ 어투를 ‘~입니다/~합니다’로 통일 */
+function polite(t){
+  t=String(t||"");
+  const fix=w=>{ // w: 마지막 어절(‘다’로 끝남)
+    if(/니다$/.test(w)||w==="다")return w;
+    if(/아니다$/.test(w))return w.slice(0,-3)+"아닙니다";
+    const c=w.charCodeAt(w.length-2);if(c<0xAC00||c>0xD7A3)return w;
+    const idx=c-0xAC00,jong=idx%28,base=c-jong;
+    if(jong===0)return w.slice(0,-2)+String.fromCharCode(base+17)+"니다";       // 하·되·이·크·르 → ㅂ니다
+    if(jong===4)return w.slice(0,-2)+String.fromCharCode(base+17)+"니다";       // 한·된·낸 → 합·됩·냅
+    return w.slice(0,-1)+"습니다";                                             // 있·없·높·같·았·었·했 → 습니다
+  };
+  return t.replace(/([가-힣]+)다(?=[.!)\]]|\s*$|\n)/g,(m,a)=>{
+      const w=a+"다";
+      if(/아니다$/.test(w))return w.slice(0,-3)+"아닙니다";
+      if(/니다$/.test(w))return m;
+      if(/(는|ㄴ)다$/.test(w)&&/는다$/.test(w))return w.slice(0,-2)+"습니다";   // 받는다
+      if(/(바다|하다보다)$/.test(w))return m;
+      const c=w.charCodeAt(w.length-2);
+      if(c>=0xAC00&&c<=0xD7A3&&(c-0xAC00)%28===8){ // ㄹ받침: 길다 → 깁니다
+        return w.slice(0,-2)+String.fromCharCode(c-8+17)+"니다";}
+      return fix(w);})
+   .replace(/(다르|같|없|있|높|낮|많|적|크|작|맞)(으)?나([,\s])/g,(m,a,_,z)=>a+"지만"+z)
+   .replace(/(의심|예상|판단|추정|우려|해당|필요|부족|누락|불일치|가능)(함|됨)(?=[.,\s]|$)/g,(m,a,b)=>a+(b==="함"?"합니다":"됩니다"));
+}
+
 function applyAiResult(out,restore){
-  const R=restore||(x=>x);
+  const R0=restore||(x=>x),R=x=>polite(R0(x));
   const vs=Array.isArray(out&&out.vendors)?out.vendors:[];
-  vendors=vs.map(v=>({role:v.role==="main"?"main":"cmp",name:R(v.name||""),biz:bizFmt(R(v.biz||"")),ceo:R(v.ceo||""),phone:R(v.phone||""),addr:R(v.addr||""),bizType:R(v.bizType||""),date:normDate(v.date),valid:normDate(v.valid),supply:v.supply??"",vat:v.vat??"",total:v.total??"",vatLabel:["포함","별도","미표기"].includes(v.vatLabel)?v.vatLabel:"미표기",stamp:["있음","없음","불명"].includes(v.stamp)?v.stamp:"불명",items:Array.isArray(v.items)?v.items:[]}));
+  vendors=vs.map(v=>({role:v.role==="main"?"main":"cmp",name:R0(v.name||""),biz:bizFmt(R0(v.biz||"")),ceo:R0(v.ceo||""),phone:R0(v.phone||""),addr:R0(v.addr||""),bizType:R0(v.bizType||""),date:normDate(v.date),valid:normDate(v.valid),supply:v.supply??"",vat:v.vat??"",total:v.total??"",vatLabel:["포함","별도","미표기"].includes(v.vatLabel)?v.vatLabel:"미표기",stamp:["있음","없음","불명"].includes(v.stamp)?v.stamp:"불명",items:Array.isArray(v.items)?v.items.map(i=>({...i,uom:R0(String(i.uom||""))})):[]}));
   if(vendors.length&&!vendors.some(v=>v.role==="main"))vendors[0].role="main";
   aiChecks={};Object.entries((out&&out.checks)||{}).forEach(([k,v])=>{if(ALLCHECKS.some(c=>c[0]===k)&&v&&ST[v.s])aiChecks[k]={s:v.s,r:R(String(v.r||""))};});
   aiSummary=R(String((out&&out.summary)||""));
   aiFlags=Array.isArray(out&&out.flags)?out.flags.map(x=>R(String(x))).slice(0,6):[];
   aiMarks=(Array.isArray(out&&out.marks)?out.marks:[]).slice(0,16).map(m=>{
     const f=files[(Math.round(+m.image)||1)-1],box=normBox(m.box);if(!f||!box)return null;
-    return{fid:f.id,box,check:ALLCHECKS.some(c=>c[0]===m.check)?m.check:"",s:["bad","warn","chk"].includes(m.s)?m.s:"warn",t:R(String(m.t||"")).slice(0,60),src:"ai"};
+    return{fid:f.id,box,check:ALLCHECKS.some(c=>c[0]===m.check)?m.check:"",s:["bad","warn","chk"].includes(m.s)?m.s:"warn",t:R0(String(m.t||"")).slice(0,60),src:"ai"};
   }).filter(Boolean);markAdj={};
   manual={};isExample=false;render();saveDraft();
 }
@@ -1778,27 +1966,34 @@ async function apiCall(prompt,imgs,signal){
 /* ---------- 채팅창 · 다른 AI용 ---------- */
 function openChatFlow(title){
   const masker=currentMasker();const prompt=buildPrompt(masker,true);
+  const other=/다른 AI/.test(title);
   const names=files.map((f,i)=>`${i+1}. ${esc(f.name)}`).join(" · ");
-  const body=`<ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
-   <li><b>요청문 복사</b>를 누르고 Claude 채팅창(claude.ai) 또는 다른 AI 채팅을 엽니다.</li>
+  const inArt=!!(window.claude&&window.claude.use);
+  const body=`<ol class="cf-steps">
+   <li><b>요청문 복사</b>를 누르고 ${other?"사용할 AI 채팅창":"Claude 채팅창(claude.ai)"}을 엽니다.</li>
    <li>채팅창에 붙여 넣어 보냅니다. 견적서 이미지·PDF는 요청문에 담기지 않으니 <b>채팅창에 직접 첨부</b>하세요${files.length?` (지금 올린 파일: ${names})`:""}.</li>
-   <li>AI의 답(JSON)을 전부 복사해 아래 칸에 붙여 넣고 <b>결과 적용</b>을 누릅니다.</li></ol>
-   <div class="mdl-row"><button class="primary" id="chCopy">① 요청문 복사</button><a class="ai-link" href="https://claude.ai/new" target="_blank" rel="noopener">Claude 새 채팅 열기 ↗</a></div>
+   <li>${other?"AI":"Claude"}의 답(JSON)을 전부 복사해 아래 칸에 붙여 넣고 <b>결과 적용</b>을 누릅니다.</li></ol>
+   <div class="cf-copy"><button class="primary" id="chCopy" type="button">① 요청문 복사</button><span class="cf-n">${prompt.length.toLocaleString("ko-KR")}자</span></div>
+   <div class="cf-opts">
+    <a class="cf-o on" href="https://claude.ai/new" target="_blank" rel="noopener"><i aria-hidden="true">💬</i><span><b>${other?"Claude 새 채팅 열기":"Claude 새 채팅 열기"} ↗</b><small>복사한 요청문을 붙여 넣을 claude.ai 채팅(새 탭). 답을 받아 아래 ②에 붙여 넣습니다.</small></span></a>
+    ${inArt?"":`<a class="cf-o" href="${ART_URL}" target="_blank" rel="noopener"><i aria-hidden="true">▤</i><span><b>견적김군을 claude.ai에서 열기 ↗</b><small>이 검토기를 claude.ai 안에서 엽니다. 본인 Claude 계정에 바로 연결돼 복사·붙여넣기 없이 검토합니다(문서는 다시 붙여 넣기).</small></span></a>`}
+   </div>
    <details class="more"><summary>요청문 보기</summary><textarea readonly style="min-height:160px">${esc(prompt)}</textarea></details>
-   <h4>② AI 답 붙여넣기</h4><textarea id="chIn" placeholder='{"vendors":[…],"checks":{…},"summary":"…","flags":[…]}'></textarea>
-   <p class="mdl-note">다른 AI는 학교 계정 보안·개인정보 처리 기준이 다를 수 있습니다. 민감한 문서는 개인정보 가림을 켜고, 결과는 반드시 직접 확인하세요. 문서가 길어 답이 끊기면 ‘계속’이라고 보내거나 나누어 요청하세요.</p>`;
-  openModal({title,body,wide:true,foot:[{label:"③ 결과 적용",primary:true,onclick:close=>{
+   <h4 class="cf-h">② ${other?"AI":"Claude"} 답 붙여넣기</h4>
+   <textarea id="chIn" class="cf-in" placeholder='{"vendors":[…]} 형태의 답을 그대로 붙여 넣으세요. 앞뒤 설명이나 json 코드 표시가 있어도 됩니다.'></textarea>
+   <p class="mdl-note">${other?"다른 AI는 학교 계정 보안·개인정보 처리 기준이 다를 수 있습니다. 민감한 문서는 개인정보 가림을 켜고, ":""}결과는 반드시 직접 확인하세요. 문서가 길어 답이 끊기면 ‘계속’이라고 보내거나 나누어 요청하세요.</p>`;
+  openModal({title,body,wide:true,foot:[{label:"취소",onclick:c=>c()},{label:"③ 결과 적용",primary:true,onclick:close=>{
     const w=document.querySelector(".te-wrap");
     try{const out=parseJson(w.querySelector("#chIn").value);applyAiResult(out,masker.restore);logRun("chat");$("status").textContent=`업체 ${vendors.length}곳을 읽었습니다. 비교표 값을 원본과 대조해 주세요.`;close();toast("결과를 적용했습니다.");}
     catch(e){toast("JSON 형식이 아닙니다. AI의 답 전체를 붙여 넣었는지 확인하세요.");}
-  }},{label:"닫기",onclick:c=>c()}],onOpen:w=>{
+  }}],onOpen:w=>{
     w.querySelector("#chCopy").onclick=async()=>toast(await copyText(prompt)?"요청문을 복사했습니다.":"복사가 막혀 있습니다. ‘요청문 보기’에서 직접 선택해 복사하세요.");
   }});
 }
 $("otherAiBtn").onclick=()=>openChatFlow("다른 AI용 프롬프트");
 
 /* ---------- 검토하기 ---------- */
-async function run(){
+async function run_core(){
   const st=$("status"),m=mode||"rules";
   const hasInput=files.length||($("fText").value||"").trim();
   if(!hasInput){
@@ -1814,13 +2009,13 @@ async function run(){
   if(m==="account"&&imgs.length&&!imgLimits){st.textContent="이 화면에서는 이미지를 보낼 수 없습니다. 내용을 글로 붙여 넣어 주세요.";return;}
   if(m==="account"&&imgLimits&&imgs.length>imgLimits.maxCount){toast(`이미지는 한 번에 ${imgLimits.maxCount}장까지 보낼 수 있습니다.`);return;}
   const masker=currentMasker();const prompt=buildPrompt(masker,false);
-  ctl=new AbortController();$("runBtn").disabled=true;$("stopBtn").hidden=false;
+  PG.set(1);ctl=new AbortController();$("runBtn").disabled=true;$("stopBtn").hidden=false;
   const t0=Date.now();const timer=setInterval(()=>st.innerHTML=`<span class="spin">견적서를 읽는 중… ${Math.round((Date.now()-t0)/1000)}초</span>`,500);
   try{
     const out=m==="account"
       ?await sample.json(prompt,{images:imgs.length?imgs:undefined,signal:ctl.signal,modelTier:$("deep").checked?"complex":"default"})
       :await apiCall(prompt,imgs,ctl.signal);
-    applyAiResult(out,masker.restore);consume();logRun(m);renderConn();
+    PG.set(2);applyAiResult(out,masker.restore);consume();logRun(m);renderConn();
     st.textContent=`업체 ${vendors.length}곳을 읽었습니다. 비교표 값을 원본과 대조해 주세요.`;
   }catch(e){
     if(e&&e.name==="AbortError"){st.textContent="검토를 중지했습니다.";}
@@ -1830,6 +2025,26 @@ async function run(){
       else st.textContent=msg||"검토 중 오류가 났습니다. 다시 시도하세요.";
     }
   }finally{clearInterval(timer);$("runBtn").disabled=false;$("stopBtn").hidden=true;}
+}
+const PG=(()=>{let el=null,t0=0,tm=0,cur=0,labels=[],hideT=0;
+  const mk=()=>{if(el)return;el=document.createElement("div");el.className="pg";el.setAttribute("role","status");el.setAttribute("aria-live","polite");document.body.appendChild(el);};
+  const draw=(fail)=>{if(!el)return;const n=labels.length;
+    el.className="pg"+(fail?" fail":"");
+    el.innerHTML=`<div class="pg-h"><b>${fail?"검토를 마치지 못했습니다":cur>=n?"검토 완료":"검토 중…"}</b><span>${Math.round((Date.now()-t0)/1000)}초</span></div><div class="pg-bar"><i style="width:${Math.min(100,Math.round((cur+(cur<n?.5:0))/n*100))}%"></i></div><ol>${labels.map((l,i)=>`<li class="${i<cur?"d":i===cur?"a":""}">${i<cur?"✓":i===cur?"●":"○"} ${l}</li>`).join("")}</ol>`;};
+  return{
+    begin(m){clearTimeout(hideT);clearInterval(tm);mk();el.classList.remove("out");t0=Date.now();cur=0;labels=m==="rules"?["입력 확인","비교표 값 읽기","규칙 점검 (요강·법령)","결과 정리"]:["입력 확인","견적서 읽기 (AI 판독)","규칙 점검 (요강·법령)","결과 정리"];draw();tm=setInterval(()=>draw(),500);},
+    set(i){cur=Math.max(cur,i);draw();},
+    async end(fail){clearInterval(tm);if(!el)return;if(fail){draw(true);}else{const n=labels.length;while(cur<n){cur++;draw();await new Promise(r=>setTimeout(r,140));}}
+      hideT=setTimeout(()=>{if(el){el.classList.add("out");setTimeout(()=>{el&&el.remove();el=null;},300);}},fail?4000:1600);}
+  };})();
+async function run(){
+  const m=mode||"rules",hasInput=files.length||($("fText").value||"").trim();
+  if(m==="chat"||(!hasInput&&!vendors.length)){return run_core();}
+  PG.begin(m==="rules"||!hasInput?"rules":"ai");
+  await new Promise(r=>setTimeout(r,60));PG.set(1);
+  await run_core();
+  const t=($("status").textContent||"");
+  PG.end(/오류|못했|중지|막혀|소진|요청이 많|올바르지/.test(t)&&!/읽었습니다|점검했습니다/.test(t));
 }
 $("runBtn").onclick=run;
 $("stopBtn").onclick=()=>ctl&&ctl.abort();
@@ -1918,11 +2133,72 @@ async function markedCanvas(f,ms,max){
   const W=Math.round(img.naturalWidth*sc),H=Math.round(img.naturalHeight*sc),c=document.createElement("canvas");c.width=W;c.height=H;
   const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,W,H);g.drawImage(img,0,0,W,H);drawMarks(g,W,H,ms);return c;
 }
-async function saveMarked(f,ms){
-  let c;try{c=await markedCanvas(f,ms,0);}catch{toast("이미지를 불러오지 못했습니다.");return;}
-  c.toBlob(b=>{if(!b)return;download(`${f.name.replace(/\.[^.]+$/,"")}_오류표시.png`,b,"image/png");toast("오류 표시가 들어간 이미지를 저장했습니다.");},"image/png");
+async function saveMarked(f,ms,fmt){
+  const jpg=fmt==="jpg";
+  let c;try{c=await (mvInc()?composeMarked(f,ms,0):markedCanvas(f,ms,0));}catch{toast("이미지를 불러오지 못했습니다.");return;}
+  c.toBlob(b=>{if(!b)return;download(`${f.name.replace(/\.[^.]+$/,"")}_오류표시.${jpg?"jpg":"png"}`,b,jpg?"image/jpeg":"image/png");toast(`오류 표시가 들어간 이미지를 ${jpg?"JPG":"PNG"}로 저장했습니다.`);},jpg?"image/jpeg":"image/png",jpg?.92:undefined);
 }
-function openMarks(fid){
+const mvInc=()=>{const e=document.getElementById("mvInc");return !e||e.checked;};
+function wrapLines(g,text,maxW){
+  const out=[];String(text||"").split("\n").forEach(par=>{let line="";
+    par.split(/(\s+)/).forEach(tok=>{
+      if(!tok)return;
+      if(g.measureText(line+tok).width<=maxW){line+=tok;return;}
+      if(line.trim()){out.push(line.trimEnd());line="";}
+      if(g.measureText(tok.trimStart()).width<=maxW){line=tok.trimStart();return;}
+      for(const ch of tok.trimStart()){if(g.measureText(line+ch).width>maxW){out.push(line);line=ch;}else line+=ch;}
+    });
+    out.push(line.trimEnd());});
+  return out;
+}
+async function composeMarked(f,ms,max){
+  const base=await markedCanvas(f,ms,max);
+  const fs=Math.round(Math.max(18,Math.min(34,base.width/38))),pad=Math.round(fs*1.1),PW=fs*22;
+  const tmp=document.createElement("canvas").getContext("2d");
+  const lay=ms.map(m=>{
+    const ck=m.check?CHECKS.find(c=>c[0]===m.check):null;
+    tmp.font=`700 ${fs}px sans-serif`;const head=wrapLines(tmp,`${MK_LB[m.s]||""}${ck?" · "+ck[2]:""}`,PW-fs*2.4);
+    tmp.font=`400 ${Math.round(fs*.9)}px sans-serif`;const det=wrapLines(tmp,m.t||"",PW-fs*2.4);
+    return {m,head,det,h:Math.round(head.length*fs*1.35+det.length*fs*1.22+fs*1.4)};
+  });
+  const title=Math.round(fs*2.4);
+  const panelH=title+lay.reduce((a,x)=>a+x.h,0)+pad;
+  const W=pad+base.width+pad+PW+pad,H=Math.max(base.height+pad*2,panelH+pad);
+  const c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");
+  g.fillStyle="#fff";g.fillRect(0,0,W,H);g.drawImage(base,pad,pad);
+  g.strokeStyle="#cfd6d2";g.lineWidth=2;g.strokeRect(pad,pad,base.width,base.height);
+  const x0=pad+base.width+pad;let y=pad;
+  g.textAlign="left";g.textBaseline="top";g.fillStyle="#111";g.font=`700 ${Math.round(fs*1.1)}px sans-serif`;
+  g.fillText(`오류 표시 ${ms.length}건`,x0,y);
+  g.font=`400 ${Math.round(fs*.8)}px sans-serif`;g.fillStyle="#666";g.fillText(f.name.length>34?f.name.slice(0,33)+"…":f.name,x0,y+Math.round(fs*1.35));
+  y+=title;
+  if(!lay.length){g.fillStyle="#666";g.font=`400 ${fs}px sans-serif`;g.fillText("표시할 오류 위치가 없습니다.",x0,y);}
+  lay.forEach(x=>{
+    g.fillStyle="#fff";g.strokeStyle="#d9dfdb";g.lineWidth=2;
+    g.beginPath();g.roundRect?g.roundRect(x0,y,PW,x.h-Math.round(fs*.3),8):g.rect(x0,y,PW,x.h-Math.round(fs*.3));g.fill();g.stroke();
+    const col=MK_COL[x.m.s]||"#555",r=fs*.62;
+    g.fillStyle=col;g.beginPath();g.arc(x0+fs*.9,y+fs*.95,r,0,7);g.fill();
+    g.fillStyle="#fff";g.font=`700 ${Math.round(fs*.8)}px sans-serif`;g.textAlign="center";g.textBaseline="middle";g.fillText(String(x.m.no),x0+fs*.9,y+fs*.98);
+    g.textAlign="left";g.textBaseline="top";
+    let ty=y+Math.round(fs*.45);const tx=x0+fs*1.9;
+    g.fillStyle="#111";g.font=`700 ${fs}px sans-serif`;x.head.forEach(l=>{g.fillText(l,tx,ty);ty+=Math.round(fs*1.35);});
+    g.fillStyle="#555";g.font=`400 ${Math.round(fs*.9)}px sans-serif`;x.det.forEach(l=>{g.fillText(l,tx,ty);ty+=Math.round(fs*1.22);});
+    y+=x.h;
+  });
+  return c;
+}
+async function copyMarked(f,ms){
+  let c;try{c=await (mvInc()?composeMarked(f,ms,1800):markedCanvas(f,ms,2400));}catch{toast("이미지를 불러오지 못했습니다.");return;}
+  try{
+    if(!(navigator.clipboard&&window.ClipboardItem))throw new Error("noclip");
+    const p=new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error("blob")),"image/png"));
+    await navigator.clipboard.write([new ClipboardItem({"image/png":p})]);
+    toast("오류 표시 이미지를 복사했습니다. 한글·워드·Teams에 Ctrl+V로 붙여 넣으세요.");
+  }catch{
+    toast("이 화면에서는 이미지 복사가 막혀 있습니다. ‘JPG 저장’을 쓰세요.");
+  }
+}
+function openMarksOld(fid){
   if(!files.length){toast("먼저 견적서를 올리세요.");return;}
   let cur=Math.max(0,files.findIndex(f=>f.id===fid));let zoom=100;
   const body=document.createElement("div");body.className="mv";
@@ -1956,10 +2232,10 @@ function openMarks(fid){
   const end=()=>{if(!drag)return;if(drag.nb){markAdj[drag.k]={...(markAdj[drag.k]||{}),box:drag.nb};}drag=null;draw();updateMarkUI();};
   body.addEventListener("pointerup",end);body.addEventListener("pointercancel",end);
   openModal({title:"견적서 미리보기 · 오류 표시",body,wide:true,foot:[
-    {label:"이 쪽 PNG로 저장",onclick:()=>{const f=files[cur];saveMarked(f,allMarks().filter(m=>m.fid===f.id));}},
+    {label:"이미지 복사",onclick:()=>{const f=files[cur];copyMarked(f,allMarks().filter(m=>m.fid===f.id));}},{label:"JPG 저장",onclick:()=>{const f=files[cur];saveMarked(f,allMarks().filter(m=>m.fid===f.id),"jpg");}},{label:"PNG 저장",onclick:()=>{const f=files[cur];saveMarked(f,allMarks().filter(m=>m.fid===f.id),"png");}},
     {label:"표시 되돌리기",onclick:()=>{markAdj={};draw();updateMarkUI();toast("옮기거나 숨긴 표시를 되돌렸습니다.");}},
     {label:"닫기",primary:true,onclick:c=>c()}
-  ],onOpen:()=>draw()});
+  ],onOpen:w=>{w.querySelector(".te-f").insertAdjacentHTML("afterbegin",'<label class="mv-inc"><input type="checkbox" id="mvInc" checked> 오류 내용 함께</label>');draw();}});
 }
 $("markBtn").onclick=()=>openMarks(files[0]&&files[0].id);
 $("shotList").addEventListener("click",e=>{const t=e.target.closest(".shot-th img,.shot-th .mk-n");if(t)openMarks(+t.closest(".shot-th").dataset.fid);});
@@ -2114,10 +2390,10 @@ function sheetHTML(){
 function attachHTML(){
   if(!files.length)return"";
   const ms=allMarks();let out="";
-  for(let p=0;p<files.length;p+=4){
-    const chunk=files.slice(p,p+4);
+  for(let p=0;p<files.length;p+=2){
+    const chunk=files.slice(p,p+2);
     out+=`<div class="sheet att"><h3 class="att">첨부  견적서 오류 표시</h3><div class="att-sub">미리보기 위 오류 위치 표시(참고용 · 원본과 대조해 확인)</div>
-    <table class="att-grid"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>${[0,2].map(r=>`<tr>${[0,1].map(c=>{const f=chunk[r+c];if(!f)return"<td></td>";const n=ms.filter(x=>x.fid===f.id).length;return`<td><div class="slot"><div class="img" data-fid="${f.id}"><div class="empty">이미지 준비 중</div></div><div class="cap">${esc(f.name)} · ${({main:"주 견적서",cmp:"비교견적서",etc:"기타 증빙"})[f.role]||""} · 오류 ${n}곳</div></div></td>`;}).join("")}</tr>`).join("")}</table></div>`;
+    <table class="att-grid"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>${[0].map(r=>`<tr>${[0,1].map(c=>{const f=chunk[r+c];if(!f)return"<td></td>";const n=ms.filter(x=>x.fid===f.id).length;return`<td><div class="slot"><div class="img" data-fid="${f.id}"><div class="empty">이미지 준비 중</div></div><div class="cap">${esc(f.name)} · ${({main:"주 견적서",cmp:"비교견적서",etc:"기타 증빙"})[f.role]||""} · 오류 ${n}곳</div></div></td>`;}).join("")}</tr>`).join("")}</table></div>`;
   }
   return out;
 }
@@ -2125,7 +2401,7 @@ async function fillAttach(seq){
   const ms=allMarks();
   for(const el of document.querySelectorAll("#sheets .img[data-fid]")){
     const f=files.find(x=>x.id===+el.dataset.fid);if(!f)continue;
-    try{const c=await markedCanvas(f,ms.filter(m=>m.fid===f.id),1000);if(seq!==sheetSeq)return;el.innerHTML=`<img alt="${esc(f.name)}" src="${c.toDataURL("image/jpeg",.82)}">`;}
+    try{const c=await markedCanvas(f,ms.filter(m=>m.fid===f.id),1500);if(seq!==sheetSeq)return;el.innerHTML=`<img alt="${esc(f.name)}" src="${c.toDataURL("image/jpeg",.82)}">`;}
     catch{el.innerHTML='<div class="empty">이미지를 불러오지 못했습니다</div>';}
   }
 }
@@ -2149,7 +2425,7 @@ $("pvPdf").onclick=()=>{
 $("pvDoc").onclick=()=>{
   const c=$("sheets").cloneNode(true);c.querySelectorAll("[contenteditable]").forEach(x=>x.removeAttribute("contenteditable"));c.querySelectorAll(".stamp").forEach(x=>x.remove());
   c.querySelectorAll(".sheet").forEach((x,i,a)=>{if(i<a.length-1)x.insertAdjacentHTML("afterend",'<br clear="all" style="page-break-before:always">');});
-  const css=`body{font-family:'Batang','바탕',serif;font-size:11pt}h3{text-align:center;font-size:18pt;font-family:'Malgun Gothic',sans-serif}h4{font-family:'Malgun Gothic',sans-serif;font-size:11pt}table{width:100%;border-collapse:collapse;border:1.5pt solid #000}td,th{border:1pt solid #000;padding:4pt 6pt;font-size:10pt;vertical-align:middle}th{background:#efefef;text-align:center;font-family:'Malgun Gothic',sans-serif}.c{text-align:center}.r{text-align:right}.res{border:1pt solid #000;padding:6pt;white-space:pre-wrap}.closing{text-align:center}.sign{text-align:right}.att-grid td{height:200pt;vertical-align:top}img{max-width:100%;max-height:230pt}.cap{text-align:center;font-size:9pt}.faint{color:#888}.form-no{font-size:9pt}`;
+  const css=`body{font-family:'Batang','바탕',serif;font-size:11pt}h3{text-align:center;font-size:18pt;font-family:'Malgun Gothic',sans-serif}h4{font-family:'Malgun Gothic',sans-serif;font-size:11pt}table{width:100%;border-collapse:collapse;border:1.5pt solid #000}td,th{border:1pt solid #000;padding:4pt 6pt;font-size:10pt;vertical-align:middle}th{background:#efefef;text-align:center;font-family:'Malgun Gothic',sans-serif}.c{text-align:center}.r{text-align:right}.res{border:1pt solid #000;padding:6pt;white-space:pre-wrap}.closing{text-align:center}.sign{text-align:right}.att-grid td{height:430pt;vertical-align:top}img{max-width:100%;max-height:400pt}.cap{text-align:center;font-size:9pt}.faint{color:#888}.form-no{font-size:9pt}`;
   download(`견적서_검토결과서_${new Date().toISOString().slice(0,10)}.doc`,`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>견적서 검토 결과서</title><style>${css}</style></head><body>${c.innerHTML}</body></html>`,"application/msword");
   toast("Word(.doc) 파일로 저장했습니다. 한글·워드에서 열 수 있습니다.");
 };
@@ -2204,6 +2480,49 @@ $("ntsKeyBtn").onclick=()=>{const b=$("ntsKeyBox");b.hidden=!b.hidden;if(!b.hidd
 $("ntsKeySave").onclick=()=>{const v=$("ntsKey").value.trim();try{v?localStorage.setItem("kqc-nts",v):localStorage.removeItem("kqc-nts")}catch{}$("ntsKeyBox").hidden=true;ntsMsg(v?"인증키를 이 브라우저에 저장했습니다.":"인증키를 삭제했습니다.","ok");};
 $("ntsKeyDel").onclick=()=>{try{localStorage.removeItem("kqc-nts")}catch{}$("ntsKey").value="";$("ntsKeyBox").hidden=true;ntsMsg("인증키를 삭제했습니다.","ok");};
 
+/* ---- claude.ai 링크 화면: 홈택스 조회 결과를 붙여 넣어 반영 (네트워크 호출 없음) ---- */
+function ntsParse(text){
+  const t=String(text||"").replace(/ /g," ");
+  const nums=[...t.matchAll(/\d{3}-?\d{2}-?\d{5}/g)].map(m=>({d:m[0].replace(/\D/g,""),i:m.index}));
+  const out={};
+  nums.forEach((n,k)=>{
+    const seg=t.slice(n.i,k+1<nums.length?nums[k+1].i:Math.min(t.length,n.i+240));
+    let cd=null,stt="";
+    if(/등록되지\s*않은|조회되지\s*않|미등록/.test(seg)){cd="";stt="";}
+    else if(/폐업자/.test(seg)){cd="03";stt="폐업자";}
+    else if(/휴업자/.test(seg)){cd="02";stt="휴업자";}
+    else if(/계속\s*사업자/.test(seg)){cd="01";stt="계속사업자";}
+    if(cd===null)return;
+    let tax="";const m=seg.match(/(일반과세자|간이과세자|면세사업자|비영리법인|과세특례자)/);if(m)tax="부가가치세 "+m[1];
+    const e=seg.match(/(\d{4})[.\-년\s]+(\d{1,2})[.\-월\s]+(\d{1,2})/);
+    out[n.d]={cd,stt,tax,end:cd==="03"&&e?e[1]+String(e[2]).padStart(2,"0")+String(e[3]).padStart(2,"0"):""};
+  });
+  return out;
+}
+function ntsPasteModal(){
+  const list=[...new Set(vendors.map(v=>ntsDigits(v.biz)).filter(d=>d.length===10))];
+  if(!list.length){ntsMsg("조회할 10자리 사업자등록번호가 없습니다.","bad");return;}
+  const fmt=d=>d.replace(/(\d{3})(\d{2})(\d{5})/,"$1-$2-$3");
+  const body=`<ol class="np-steps">
+   <li><b>번호 복사</b><div class="np-nums">${list.map(d=>esc(fmt(d))).join("<br>")}</div><button type="button" id="npCopy">번호 복사</button></li>
+   <li><b>홈택스 열기</b> 사업자등록 상태조회 화면에서 복사한 번호를 붙여 넣고 조회합니다(한 번에 여러 개 가능, 로그인 불필요).<br><a class="ai-link" href="https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml&menuCd=search&searchInfo3338847872" target="_blank" rel="noopener">홈택스 사업자등록상태조회 ↗</a></li>
+   <li><b>결과 붙여넣기</b> 조회 결과 표를 드래그해 복사한 뒤 아래에 붙여 넣으세요.<textarea id="npText" rows="6" placeholder="예) 124-81-00998 계속사업자 …"></textarea></li>
+  </ol><p class="mdl-note" id="npMsg">붙여 넣은 글에서 번호별로 계속사업자·휴업자·폐업자·미등록을 읽습니다. 읽지 못한 번호는 그대로 둡니다.</p>`;
+  openModal({title:"국세청 사업자 상태 확인",body,wide:false,foot:[
+    {label:"결과 반영",primary:true,onclick:close=>{
+      const w=document.querySelector(".te-wrap");const r=ntsParse(w.querySelector("#npText").value);
+      const at=ntsAt(new Date());let ok=0,miss=[];
+      vendors.forEach(v=>{const d=ntsDigits(v.biz);if(d.length!==10)return;const x=r[d];if(!x){miss.push(v.name||fmt(d));return;}v.nts={...x,taxCd:"",at:at+" · 홈택스 확인"};ok++;});
+      if(!ok){w.querySelector("#npMsg").textContent="붙여 넣은 글에서 상태를 읽지 못했습니다. 번호와 ‘계속사업자’ 등이 함께 보이도록 표를 그대로 복사해 주세요.";return;}
+      isExample=false;render();saveDraft();close();
+      ntsMsg(`${ok}곳 반영${miss.length?` · 못 읽음: ${miss.join(", ")}`:""}`,miss.length?"bad":"ok");
+    }},
+    {label:"닫기",onclick:c=>c()}],
+   onOpen:w=>{w.querySelector("#npCopy").onclick=async()=>toast(await copyText(list.map(fmt).join("\n"))?"번호를 복사했습니다.":"복사가 막혀 있습니다.");}});
+}
+const _ntsGo=$("ntsBtn").onclick;
+$("ntsBtn").onclick=()=>{if(window.claude&&window.claude.use)ntsPasteModal();else _ntsGo();};
+
 
 /* ================= 견적서 담당자에게 보완 요청 메일 ================= */
 function vendorIssues(v){
@@ -2221,6 +2540,8 @@ function vendorIssues(v){
     else if(t>0&&Math.abs(t-Math.round(s*0.1))>1)add("vat",`부가세 금액 확인 (공급가액 ${won(s)}원의 10%는 ${won(Math.round(s*0.1))}원인데 ${won(t)}원으로 기재)`);
   }
   if(v.items?.length&&s!=null){const isum=v.items.reduce((a,i)=>a+(num(i.amount)??0),0);if(isum&&Math.abs(isum-s)>1)add("items",`품목별 금액 합계(${won(isum)}원)와 공급가액(${won(s)}원) 일치 여부 확인`);}
+  if(v.items?.length){const L=v.items.filter(i=>/^(식|일식|set|세트|lot)$/i.test(String(i.uom||"").trim())||/일식|일체|일괄/.test(String(i.name||"")));
+    if(L.length)add("lump",`‘식’ 표기 품목(${L.map(i=>"‘"+(i.name||"품목")+"’").join(", ")})의 수량·단가 등 세부 산출 내역 기재`);}
   if((v.vatLabel||"미표기")==="미표기")add("vatlbl","금액의 부가세 포함/별도 여부 명시");
   if((v.stamp||"불명")!=="있음")add("stamp","대표자 직인(또는 서명) 날인");
   if(!String(v.phone||"").trim())add("phone","담당자 연락처(전화) 기재");
@@ -2254,6 +2575,7 @@ function openVendorMail(){
       if(url.length>1900){toast("내용이 길어 메일 앱에 다 담기지 않을 수 있습니다. ‘복사’ 후 붙여 넣으세요.");}
       location.href=url;}},
     {label:"제목+내용 복사",onclick:async()=>{const w=document.querySelector(".te-wrap");toast(await copyText(`제목: ${w.querySelector("#mlSub").value}\n\n${w.querySelector("#mlBody").value}`)?"복사했습니다.":"복사가 막혀 있습니다.");}},
+    {label:"수정 요청 이미지",onclick:()=>{const ws=document.querySelectorAll(".te-wrap");reqImage(ws[ws.length-1]);}},
     {label:"닫기",onclick:c=>c()}],
    onOpen:w=>{
     const $$=s=>w.querySelector(s);
@@ -2268,7 +2590,7 @@ function openVendorMail(){
       $$("#mlBody").value=`${nm} 견적 담당자님께,\n\n안녕하세요. 건국대학교${$$("#mlOrg").value.trim()?" "+$$("#mlOrg").value.trim():""} ${$$("#mlName").value.trim()||"담당자"}입니다.\n보내 주신 견적서를 검토하던 중 아래 사항의 보완이 필요하여 연락드립니다.\n\n${on.length?on.map((t,i)=>`${i+1}. ${t}`).join("\n"):"(보완 요청 항목을 선택하세요)"}\n\n※ 견적 금액과 조건은 실제 내용 그대로 작성해 주시고, 누락·오기된 부분만 정정해 주시기 바랍니다.\n보완한 견적서(PDF)는 이 메일로 회신해 주세요.${dd?`\n회신 요청일: ${dd}`:""}\n\n감사합니다.\n\n${sign}${tel?`\n${tel}`:""}`.trim();
     };
     const draw=()=>{
-      const v=cur();lastIssues=vendorIssues(v);
+      const v=cur();lastIssues=vendorIssues(v);__li=lastIssues;
       $$("#mlList").innerHTML=lastIssues.map((x,i)=>`<label><input type="checkbox" data-i="${i}"${x.on?" checked":""}> ${esc(x.t)}</label>`).join("");
       $$("#mlTo").value=v.email||"";dirty=false;build();
     };
@@ -2283,6 +2605,210 @@ function openVendorMail(){
 }
 $("mailBtn").onclick=openVendorMail;
 $("mailBtn2").onclick=openVendorMail;
+
+// ---- 업체 수정 요구사항 이미지
+let __li=[];const lastIssuesRef=()=>__li;
+function reqCanvas(o){
+  const W=1000,P=44,fs=22,g0=document.createElement("canvas").getContext("2d");
+  g0.font=`400 ${fs}px sans-serif`;
+  const items=o.items.map(t=>({lines:wrapLines(g0,t,W-P*2-80)}));
+  items.forEach(x=>x.h=Math.max(64,x.lines.length*Math.round(fs*1.45)+30));
+  const noteLines=wrapLines(g0,o.note,W-P*2);
+  const H=210+items.reduce((a,x)=>a+x.h+12,0)+noteLines.length*Math.round(fs*1.45)+(o.sign?70:30)+60;
+  const c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");
+  g.fillStyle="#fff";g.fillRect(0,0,W,H);
+  g.fillStyle="#0b6b3a";g.fillRect(0,0,W,120);
+  g.fillStyle="#fff";g.textBaseline="top";g.font="700 38px sans-serif";g.fillText("견적서 수정 요청",P,26);
+  g.font="400 21px sans-serif";g.fillText(`${o.vendor} 귀중  ·  ${o.org}`,P,78);
+  let y=146;g.fillStyle="#222";g.font=`700 ${fs}px sans-serif`;
+  g.fillText(`아래 ${o.items.length}개 항목을 모두 반영하여 견적서를 다시 보내 주세요.${o.due?"  (회신 요청일 "+o.due+")":""}`,P,y);y+=50;
+  items.forEach((x,i)=>{
+    g.fillStyle="#f6f8f6";g.strokeStyle="#cfd8cf";g.lineWidth=1.5;g.beginPath();(g.roundRect?g.roundRect(P,y,W-P*2,x.h,10):g.rect(P,y,W-P*2,x.h));g.fill();g.stroke();
+    g.fillStyle="#d4351c";g.beginPath();g.arc(P+30,y+x.h/2,19,0,7);g.fill();
+    g.fillStyle="#fff";g.font="700 20px sans-serif";g.textAlign="center";g.textBaseline="middle";g.fillText(String(i+1),P+30,y+x.h/2+1);
+    g.textAlign="left";g.textBaseline="top";g.fillStyle="#111";g.font=`400 ${fs}px sans-serif`;
+    let ty=y+15;x.lines.forEach(l=>{g.fillText(l,P+66,ty);ty+=Math.round(fs*1.45);});
+    y+=x.h+12;
+  });
+  y+=8;g.fillStyle="#555";g.font=`400 ${fs}px sans-serif`;noteLines.forEach(l=>{g.fillText(l,P,y);y+=Math.round(fs*1.45);});
+  if(o.sign){y+=14;g.fillStyle="#111";g.font=`700 ${fs}px sans-serif`;g.fillText(o.sign,P,y);}
+  return c;
+}
+function reqImage(mw){
+  const q=s=>mw.querySelector(s);
+  const checked=[...mw.querySelectorAll("#mlList input:checked")].map(i=>lastIssuesRef()[+i.dataset.i].t);
+  if(!checked.length){toast("보완 요청 항목을 하나 이상 선택하세요.");return;}
+  const v=vendors[+q("#mlV").value]||{};
+  const due=q("#mlDue").value.replace(/(\d{4})-(\d{2})-(\d{2})/,"$1. $2. $3.");
+  const org=q("#mlOrg").value.trim(),nm=q("#mlName").value.trim(),tel=q("#mlTel").value.trim();
+  const o={vendor:v.name||"견적 업체",org:org?"건국대학교 "+org:"건국대학교",due,items:checked,
+    note:"※ 수정한 견적서(직인 날인본)를 회신해 주세요. 금액을 바꾸는 경우 공급가액·부가세·합계가 서로 맞는지 확인 부탁드립니다.",
+    sign:[nm,tel].filter(Boolean).join("  ·  ")};
+  const c=reqCanvas(o);
+  const fname=`${o.vendor}_견적서_수정요청.jpg`;
+  const wrap=document.createElement("div");c.style.cssText="width:100%;height:auto;border:1px solid var(--line);border-radius:8px";wrap.appendChild(c);
+  openModal({title:"업체 수정 요청 이미지",body:wrap,wide:true,foot:[
+   {label:"이미지 복사",primary:true,onclick:async()=>{try{
+      if(!(navigator.clipboard&&window.ClipboardItem))throw 0;
+      const p=new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(),"image/png"));
+      await navigator.clipboard.write([new ClipboardItem({"image/png":p})]);toast("수정 요청 이미지를 복사했습니다. 메일·메신저에 Ctrl+V로 붙여 넣으세요.");
+    }catch{toast("이 화면에서는 복사가 막혀 있습니다. ‘JPG 저장’을 쓰세요.");}}},
+   {label:"JPG 저장",onclick:()=>{const t=document.createElement("canvas");t.width=c.width;t.height=c.height;const g=t.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,t.width,t.height);g.drawImage(c,0,0);
+      t.toBlob(b=>{if(b){download(fname,b,"image/jpeg");toast("JPG로 저장했습니다.");}},"image/jpeg",0.92);}},
+   {label:"닫기",onclick:cl=>cl()}]});
+}
+
+/* ================= 검토 결과서 이미지 (A4 세로, 쪽당 견적서 2장) ================= */
+const RP={W:1240,H:1754,M:36};
+function rpFont(g,w,px){g.font=`${w} ${px}px sans-serif`;}
+function rpRound(g,x,y,w,h,r){g.beginPath();g.roundRect?g.roundRect(x,y,w,h,r):g.rect(x,y,w,h);}
+function rpHead(g,title,pg,n){
+  const {W,M}=RP;g.fillStyle="#0b6b3a";g.fillRect(0,0,W,84);
+  g.fillStyle="#fff";g.textBaseline="middle";g.textAlign="left";rpFont(g,700,32);g.fillText(title,M,42);
+  g.textAlign="right";rpFont(g,400,20);const d=new Date();
+  g.fillText(`건국대학교 견적서 검토 결과서 · ${d.getFullYear()}. ${d.getMonth()+1}. ${d.getDate()}. · ${pg}/${n}쪽`,W-M,42);g.textAlign="left";g.textBaseline="top";
+}
+function rpState(onlyBW){return onlyBW?["bad","warn"]:["bad","warn","chk"];}
+function rpSummaryPages(sel){
+  const {W,H,M}=RP,pages=[],tg=document.createElement("canvas").getContext("2d");
+  const rows=CHECKS.map(([id,c,t],i)=>({id,t,n:i+1,r:results[id]})).filter(x=>x.r&&sel.includes(x.r.s)).sort((a,b)=>RANK[b.r.s]-RANK[a.r.s]||a.n-b.n);
+  const cnt=s=>Object.values(results).filter(r=>r&&r.s===s).length;
+  const main=vendors.find(v=>v.role==="main"),amtv=main?(num(main.total)??(num(main.supply)!=null?num(main.supply)+(num(main.vat)||0):null)):null;
+  const lay=rows.map(x=>{rpFont(tg,700,24);const h=wrapLines(tg,`${x.n}. ${x.t}`,W-M*2-150);rpFont(tg,400,22);const d=wrapLines(tg,x.r.r||"",W-M*2-150);
+    return{x,h,d,ht:h.length*34+d.length*31+26};});
+  let i=0,first=true;
+  do{const c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,W,H);
+    rpHead(g,"검토 결과 요약",1,1);let y=108;
+    if(first){
+      g.fillStyle="#111";rpFont(g,700,26);g.fillText(`${kind||"물품"} 견적 · ${main&&main.name||"주 견적서 미지정"}${amtv!=null?" · "+won(amtv)+"원":""}`,M,y);y+=44;
+      g.fillStyle="#555";rpFont(g,400,21);g.fillText(`업체 ${vendors.length}곳 · 견적서 ${files.length}장${sel.length===2?" · 부적합·주의 항목만 표시":""}`,M,y);y+=40;
+      let x=M;[["bad","부적합"],["warn","주의"],["chk","확인 필요"],["ok","적합"]].forEach(([s,l])=>{const t=`${l} ${cnt(s)}건`;rpFont(g,700,22);const w=g.measureText(t).width+34;
+        g.fillStyle=s==="ok"?"#0b6b3a":MK_COL[s]||"#555";rpRound(g,x,y,w,40,20);g.fill();g.fillStyle="#fff";g.textBaseline="middle";g.fillText(t,x+17,y+21);g.textBaseline="top";x+=w+12;});
+      y+=64;first=false;}
+    for(;i<lay.length;i++){const L=lay[i];if(y+L.ht>H-M-20)break;
+      g.fillStyle="#fafbfa";g.strokeStyle="#d9dfdb";g.lineWidth=2;rpRound(g,M,y,W-M*2,L.ht-8,10);g.fill();g.stroke();
+      const col=L.x.r.s==="bad"?MK_COL.bad:L.x.r.s==="warn"?MK_COL.warn:MK_COL.chk;
+      g.fillStyle=col;rpRound(g,M+14,y+14,100,34,17);g.fill();g.fillStyle="#fff";rpFont(g,700,19);g.textAlign="center";g.textBaseline="middle";g.fillText(ST[L.x.r.s],M+64,y+32);g.textAlign="left";g.textBaseline="top";
+      let ty=y+12;const tx=M+134;g.fillStyle="#111";rpFont(g,700,24);L.h.forEach(l=>{g.fillText(l,tx,ty);ty+=34;});
+      g.fillStyle="#444";rpFont(g,400,22);L.d.forEach(l=>{g.fillText(l,tx,ty);ty+=31;});y+=L.ht;}
+    if(!lay.length){g.fillStyle="#0b6b3a";rpFont(g,700,26);g.fillText("표시할 부적합·주의 항목이 없습니다.",M,y);}
+    pages.push(c);
+  }while(i<lay.length);
+  pages.forEach((c,k)=>{const g=c.getContext("2d");g.fillStyle="#0b6b3a";g.fillRect(0,0,RP.W,84);rpHead(g,"검토 결과 요약",k+1,pages.length);});
+  return pages;
+}
+async function rpImagePage(fs2,sel,pg,N){
+  const {W,H,M}=RP,c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");
+  g.fillStyle="#fff";g.fillRect(0,0,W,H);rpHead(g,"견적서 오류 표시",pg,N);
+  const colW=Math.floor((W-M*2-24)/2),top=104,imgH=1040,tmp=document.createElement("canvas").getContext("2d");
+  for(let k=0;k<fs2.length;k++){const f=fs2[k],x0=M+k*(colW+24);
+    const ms=allMarks().filter(m=>m.fid===f.id&&sel.includes(m.s)).sort((a,b)=>a.no-b.no);
+    g.textAlign="left";g.textBaseline="top";g.fillStyle="#111";rpFont(g,700,22);
+    const nm=`${({main:"주 견적서",cmp:"비교견적서",etc:"기타 증빙"})[f.role]||""} · ${f.name}`;g.fillText(nm.length>34?nm.slice(0,33)+"…":nm,x0,top);
+    let bc;try{bc=await markedCanvas(f,ms,2400);}catch{continue;}
+    const s=Math.min(colW/bc.width,imgH/bc.height),w=Math.round(bc.width*s),h=Math.round(bc.height*s),iy=top+36;
+    g.fillStyle="#f3f5f4";g.fillRect(x0,iy,colW,imgH);g.drawImage(bc,x0+Math.round((colW-w)/2),iy,w,h);
+    g.strokeStyle="#cfd6d2";g.lineWidth=2;g.strokeRect(x0,iy,colW,imgH);
+    let y=iy+imgH+14;const bottom=H-M;let shown=0;
+    if(!ms.length){g.fillStyle="#0b6b3a";rpFont(g,700,22);g.fillText("표시할 부적합·주의 오류가 없습니다.",x0,y);}
+    for(const m of ms){
+      const ck=m.check?CHECKS.find(c=>c[0]===m.check):null;
+      rpFont(tmp,700,21);const head=wrapLines(tmp,`${MK_LB[m.s]}${ck?" · "+ck[2]:""}`,colW-62);rpFont(tmp,400,19);const det=wrapLines(tmp,m.t||"",colW-62);
+      const hh=head.length*28+det.length*25+14;
+      if(y+hh>bottom-(ms.length-shown>1?30:0)){break;}
+      g.fillStyle="#fff";g.strokeStyle="#d9dfdb";g.lineWidth=2;rpRound(g,x0,y,colW,hh-6,8);g.fill();g.stroke();
+      g.fillStyle=MK_COL[m.s]||"#555";g.beginPath();g.arc(x0+26,y+24,15,0,7);g.fill();
+      g.fillStyle="#fff";rpFont(g,700,17);g.textAlign="center";g.textBaseline="middle";g.fillText(String(m.no),x0+26,y+25);g.textAlign="left";g.textBaseline="top";
+      let ty=y+7;g.fillStyle="#111";rpFont(g,700,21);head.forEach(l=>{g.fillText(l,x0+52,ty);ty+=28;});
+      g.fillStyle="#555";rpFont(g,400,19);det.forEach(l=>{g.fillText(l,x0+52,ty);ty+=25;});
+      y+=hh;shown++;}
+    if(shown<ms.length){g.fillStyle="#666";rpFont(g,700,19);g.fillText(`외 ${ms.length-shown}건 — 앱의 ‘크게 보기’ 목록에서 확인하세요.`,x0,y+2);}
+  }
+  return c;
+}
+async function buildReport(onlyBW){
+  const sel=rpState(onlyBW),pages=[];
+  const sum=rpSummaryPages(sel);
+  const ids=files.filter(f=>f.role!=="etc"||allMarks().some(m=>m.fid===f.id));
+  const nImg=Math.ceil(ids.length/2),N=sum.length+nImg;
+  for(let i=0;i<nImg;i++)pages.push(await rpImagePage(ids.slice(i*2,i*2+2),sel,sum.length+i+1,N));
+  // 쪽 번호 재기록
+  sum.forEach((c,k)=>{const g=c.getContext("2d");rpHead(g,"검토 결과 요약",k+1,N);});
+  return sum.concat(pages);
+}
+function openReportImage(){
+  if(!vendors.length&&!files.length){toast("먼저 견적서를 올리거나 검토하세요.");return;}
+  const body=document.createElement("div");
+  body.innerHTML=`<div class="rp-bar"><label><input type="checkbox" id="rpBW" checked> 부적합·주의만 담기</label><span class="sp"></span><button type="button" data-pv>◀</button><b data-ttl></b><button type="button" data-nx>▶</button></div><div class="rp-view" data-view><p class="mdl-note">만드는 중…</p></div><p class="mdl-note">A4 세로 · 한 쪽에 견적서 2장 · 1쪽은 요약, 이후 쪽은 오류 표시 이미지입니다. 한글·워드·Teams에 붙여 넣거나 JPG로 저장하세요.</p>`;
+  let pages=[],cur=0;const q=s=>body.querySelector(s);
+  const show=()=>{const v=q("[data-view]");v.innerHTML="";if(!pages.length)return;const c=pages[cur];c.style.cssText="width:100%;height:auto;border:1px solid var(--line);border-radius:6px";v.appendChild(c);
+    q("[data-ttl]").textContent=`${cur+1} / ${pages.length}쪽`;q("[data-pv]").disabled=cur===0;q("[data-nx]").disabled=cur===pages.length-1;};
+  const make=async()=>{q("[data-view]").innerHTML='<p class="mdl-note">만드는 중…</p>';try{pages=await buildReport(q("#rpBW").checked);}catch(e){q("[data-view]").innerHTML='<p class="mdl-note">이미지를 만들지 못했습니다.</p>';return;}cur=Math.min(cur,pages.length-1);show();};
+  const toJpg=c=>new Promise(res=>{const t=document.createElement("canvas");t.width=c.width;t.height=c.height;const g=t.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,t.width,t.height);g.drawImage(c,0,0);t.toBlob(res,"image/jpeg",0.92);});
+  const base=()=>`검토결과서_${(vendors.find(v=>v.role==="main")||{}).name||"견적"}`;
+  openModal({title:"검토 결과서 이미지",body,wide:true,foot:[
+    {label:"이 쪽 복사",primary:true,onclick:async()=>{try{if(!(navigator.clipboard&&window.ClipboardItem))throw 0;const c=pages[cur];await navigator.clipboard.write([new ClipboardItem({"image/png":new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(),"image/png"))})]);toast("이 쪽을 복사했습니다. Ctrl+V로 붙여 넣으세요.");}catch{toast("이 화면에서는 복사가 막혀 있습니다. ‘JPG 저장’을 쓰세요.");}}},
+    {label:"이 쪽 JPG 저장",onclick:async()=>{if(!pages.length)return;download(`${base()}_${cur+1}쪽.jpg`,await toJpg(pages[cur]),"image/jpeg");toast("JPG로 저장했습니다.");}},
+    {label:"모든 쪽 저장",onclick:async()=>{for(let i=0;i<pages.length;i++){download(`${base()}_${i+1}쪽.jpg`,await toJpg(pages[i]),"image/jpeg");await new Promise(r=>setTimeout(r,350));}toast(`${pages.length}쪽을 저장했습니다.`);}},
+    {label:"닫기",onclick:c=>c()}],
+   onOpen:()=>{body.addEventListener("click",e=>{if(e.target.closest("[data-pv]")){cur=Math.max(0,cur-1);show();}else if(e.target.closest("[data-nx]")){cur=Math.min(pages.length-1,cur+1);show();}});q("#rpBW").onchange=make;make();}});
+}
+document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#repBtn,#repImgBtn")){const d=document.getElementById("expMenu");if(d)d.open=false;openReportImage();}});
+
+/* ================= 첨부 견적서 오류 표시: 한 쪽에 이미지 2장 ================= */
+function openMarks(fid){
+  if(!files.length){toast("먼저 견적서를 올리세요.");return;}
+  const PER=2,pn=()=>Math.ceil(files.length/PER);
+  let cur=Math.max(0,Math.floor(files.findIndex(f=>f.id===fid)/PER)),zoom=100;
+  const body=document.createElement("div");body.className="mv";
+  body.innerHTML=`<div class="mv-bar"><button type="button" data-pv aria-label="이전 쪽">◀</button><b data-ttl></b><button type="button" data-nx aria-label="다음 쪽">▶</button><span class="sp"></span><label>확대 <input type="range" min="60" max="220" value="100" data-zm></label><button type="button" data-fit>맞춤</button></div><div class="mv2" data-cols></div><p class="mdl-note" data-note></p>`;
+  const q=s=>body.querySelector(s);
+  const pageFiles=()=>files.slice(cur*PER,cur*PER+PER);
+  const ttl=id=>{const c=ALLCHECKS.find(x=>x[0]===id);return c?c[2]:"";};
+  const ROLE={main:"주 견적서",cmp:"비교견적서",etc:"기타 증빙"};
+  function draw(){
+    const pf=pageFiles();
+    q("[data-ttl]").textContent=`${cur+1} / ${pn()}쪽 · 견적서 ${pf.length}장`;
+    q("[data-pv]").disabled=cur===0;q("[data-nx]").disabled=cur>=pn()-1;
+    q("[data-cols]").innerHTML=pf.map(f=>{const ms=allMarks().filter(m=>m.fid===f.id);
+      return `<section class="mv2-c"><h4>${esc(ROLE[f.role]||"")} · ${esc(f.name)} <small>${ms.length}건</small></h4>
+      <div class="mv-view"><div class="mv-stage" data-stage style="width:${zoom}%"><img alt="" src="${f.url}"><div class="mv-ov">${ms.map(m=>`<div class="mk ${m.s}" data-k="${esc(m.key)}" style="left:${m.box[0]*100}%;top:${m.box[1]*100}%;width:${m.box[2]*100}%;height:${m.box[3]*100}%" title="${esc(m.t||"")}"><i>${m.no}</i></div>`).join("")}</div></div></div>
+      <ol class="mv-list">${ms.length?ms.map(m=>`<li data-k="${esc(m.key)}"><span class="mk-no ${m.s}">${m.no}</span><div><b>${MK_LB[m.s]}</b>${m.check?` · <span class="mk-c">${esc(ttl(m.check))}</span>`:""}<p>${esc(m.t||"")}${m.src==="ai"?" <em>(AI가 짚은 위치)</em>":""}</p></div><button type="button" data-hide="${esc(m.key)}" aria-label="이 표시 숨기기" title="이 표시 숨기기">×</button></li>`).join(""):'<li class="mk-none">이 견적서에 표시할 오류 위치가 없습니다.</li>'}</ol></section>`;}).join("");
+    q("[data-note]").textContent=files.some(x=>x.texts&&x.texts.length)||aiMarks.length?"한 쪽에 견적서 2장씩 보입니다. 박스를 끌어 위치를 고칠 수 있고, 맞지 않는 표시는 ×로 숨길 수 있습니다. 위치는 참고용이며 원본과 대조해 확인하세요.":"AI 검토를 하면 문제 위치가 박스로 표시됩니다. 글자가 들어 있는 PDF는 AI 없이도 일부 오류를 표시합니다.";
+  }
+  body.addEventListener("click",e=>{
+    if(e.target.closest("[data-pv]")){cur=Math.max(0,cur-1);draw();}
+    else if(e.target.closest("[data-nx]")){cur=Math.min(pn()-1,cur+1);draw();}
+    else if(e.target.closest("[data-fit]")){zoom=100;q("[data-zm]").value=100;draw();}
+    const h=e.target.closest("[data-hide]");if(h){markAdj[h.dataset.hide]={...(markAdj[h.dataset.hide]||{}),hide:true};draw();updateMarkUI();}
+    const li=e.target.closest(".mv-list li[data-k]");if(li&&!h){body.querySelectorAll(".mk.sel,.mv-list li.sel").forEach(x=>x.classList.remove("sel"));li.classList.add("sel");const b=[...body.querySelectorAll(".mk")].find(x=>x.dataset.k===li.dataset.k);if(b){b.classList.add("sel");try{b.scrollIntoView({block:"center",inline:"center",behavior:"smooth"});}catch{}}}
+  });
+  q("[data-zm]").addEventListener("input",e=>{zoom=+e.target.value;body.querySelectorAll("[data-stage]").forEach(s=>s.style.width=zoom+"%");});
+  let drag=null;
+  body.addEventListener("pointerdown",e=>{const b=e.target.closest(".mk");if(!b)return;e.preventDefault();const st=b.closest("[data-stage]").getBoundingClientRect();const k=b.dataset.k;const m=allMarks().find(x=>x.key===k);if(!m)return;drag={b,k,st,sx:e.clientX,sy:e.clientY,box:m.box.slice()};try{b.setPointerCapture(e.pointerId);}catch{}});
+  body.addEventListener("pointermove",e=>{if(!drag)return;const dx=(e.clientX-drag.sx)/drag.st.width,dy=(e.clientY-drag.sy)/drag.st.height;const [x,y,w,h]=drag.box;drag.nb=[Math.max(0,Math.min(1-w,x+dx)),Math.max(0,Math.min(1-h,y+dy)),w,h];drag.b.style.left=drag.nb[0]*100+"%";drag.b.style.top=drag.nb[1]*100+"%";});
+  const end=()=>{if(!drag)return;if(drag.nb){markAdj[drag.k]={...(markAdj[drag.k]||{}),box:drag.nb};}drag=null;draw();updateMarkUI();};
+  body.addEventListener("pointerup",end);body.addEventListener("pointercancel",end);
+  const inc=()=>{const e=document.getElementById("mvInc");return !e||e.checked;};
+  // 이 쪽(견적서 2장)을 한 장의 이미지로: 오류 내용 함께 = A4 결과서 쪽, 아니면 이미지만 나란히
+  async function pageCanvas(){
+    const pf=pageFiles(),all=["bad","warn","chk"];
+    if(inc())return rpImagePage(pf,all,cur+1,pn());
+    const cs=[];for(const f of pf)cs.push(await markedCanvas(f,allMarks().filter(m=>m.fid===f.id),1600));
+    const gap=24,H=Math.max(...cs.map(c=>c.height)),W=cs.reduce((a,c)=>a+c.width,0)+gap*(cs.length+1);
+    const c=document.createElement("canvas");c.width=W;c.height=H+gap*2;const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,c.width,c.height);
+    let x=gap;cs.forEach(k=>{g.drawImage(k,x,gap);x+=k.width+gap;});return c;
+  }
+  const nm=()=>`견적서_오류표시_${cur+1}쪽`;
+  const toBlob=(c,t,qv)=>new Promise(res=>{if(t==="image/jpeg"){const z=document.createElement("canvas");z.width=c.width;z.height=c.height;const g=z.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,z.width,z.height);g.drawImage(c,0,0);z.toBlob(res,t,qv);}else c.toBlob(res,t);});
+  openModal({title:"견적서 미리보기 · 오류 표시 (한 쪽 2장)",body,wide:true,foot:[
+    {label:"이 쪽 복사",onclick:async()=>{try{const c=await pageCanvas();if(!(navigator.clipboard&&window.ClipboardItem))throw 0;await navigator.clipboard.write([new ClipboardItem({"image/png":toBlob(c,"image/png")})]);toast("이 쪽 이미지를 복사했습니다. Ctrl+V로 붙여 넣으세요.");}catch{toast("이 화면에서는 복사가 막혀 있습니다. ‘JPG 저장’을 쓰세요.");}}},
+    {label:"JPG 저장",onclick:async()=>{try{const c=await pageCanvas();download(nm()+".jpg",await toBlob(c,"image/jpeg",.92),"image/jpeg");toast("JPG로 저장했습니다.");}catch{toast("이미지를 만들지 못했습니다.");}}},
+    {label:"PNG 저장",onclick:async()=>{try{const c=await pageCanvas();download(nm()+".png",await toBlob(c,"image/png"),"image/png");toast("PNG로 저장했습니다.");}catch{toast("이미지를 만들지 못했습니다.");}}},
+    {label:"표시 되돌리기",onclick:()=>{markAdj={};draw();updateMarkUI();toast("옮기거나 숨긴 표시를 되돌렸습니다.");}},
+    {label:"닫기",primary:true,onclick:c=>c()}
+  ],onOpen:w=>{w.querySelector(".te-f").insertAdjacentHTML("afterbegin",'<label class="mv-inc"><input type="checkbox" id="mvInc" checked> 오류 내용 함께</label>');draw();}});
+}
 
 /* ================= 예시 · 지우기 · 복사 ================= */
 function loadSample(){
@@ -2335,7 +2861,7 @@ window.addEventListener("hashchange",route);
 document.querySelectorAll("[data-tab]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();history.replaceState(null,"","#"+a.dataset.tab);route();window.scrollTo({top:0});}));
 function seg(id,cb){const el=$(id);el.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;el.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));cb(b.dataset.v);});}
 seg("kind",v=>{kind=v;saveDraft();});
-seg("ckFilter",v=>{ckFilter=v;renderCk();});
+
 
 /* ================= 적발 사례 ================= */
 const CASES=[
@@ -2422,7 +2948,7 @@ ip.addEventListener("drop",e=>{if(e.defaultPrevented)return;e.preventDefault();t
   window.addEventListener("hashchange",()=>{if(!$("tab-preview").hidden)renderSheet();lbSoon();});
   route();
   applyScope();
-  if(loadDraft()){render();$("status").textContent="이전에 입력한 내용을 불러왔습니다.";}else loadSample();
+  if(loadDraft()){render();showResults();$("status").textContent="이전에 입력한 내용을 불러왔습니다.";}else loadSample();
   renderBasis();renderConn();updateVaultCnt();renderSessBtn();sessLast=JSON.stringify(snap());
   const _sd=saveDraft;
   saveDraft=function(){_sd();vaultSave();};
