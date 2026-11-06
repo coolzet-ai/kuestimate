@@ -466,6 +466,7 @@ nav.gnb a{font-size:14px;padding:8px 10px;border-bottom-width:2px}
 .cc-open{display:block;text-align:center;background:var(--green);color:#fff;font-weight:700;padding:10px 12px;border-radius:8px;text-decoration:none}
 .cc-open:hover{filter:brightness(1.1)}
 .cc-open[hidden]{display:none}
+button.cc-open{width:100%;border:0;cursor:pointer;font:inherit;font-weight:700}
 .conn-more{margin:4px 0 10px}
 .conn-more>summary{cursor:pointer;font-weight:700;color:var(--green);padding:4px 0;font-size:14px}
 .cm-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
@@ -913,7 +914,8 @@ details.more[open] summary{margin-bottom:8px}
       <div class="menu-pop wide" id="aiPop" hidden>
         <div class="conn-card" id="connCard">
           <div class="cc-top"><span class="cc-ic" aria-hidden="true">C</span><div><b id="ccTitle">확인 중</b><small id="ccSub"></small></div></div>
-          <a class="cc-open" id="ccOpen" href="https://claude.ai/artifact/Bd9u56YXJaqyfnhUADafPy" target="_blank" rel="noopener">견적김군 claude.ai에서 열기 ↗</a>
+          <a class="cc-open" id="ccOpen" href="https://claude.ai/artifact/XLomisii9cBo6jBKzXY2ok" target="_blank" rel="noopener">견적김군 claude.ai에서 열기 ↗</a>
+          <button type="button" class="cc-open" id="ccAct" hidden></button>
         </div>
         <details class="conn-more" id="connMore" open>
           <summary>다른 연결 방식</summary>
@@ -1569,10 +1571,10 @@ const LOG_ENDPOINT="";                   // 이용 기록을 받을 주소(선�
 const CONTACT="coolzet@konkuk.ac.kr";
 const BASIS=[["요강","건국대 구매계약업무요강(3-1-21)","2025. 10. 1."],["보조금","보조금법·지침",""],["부가세","부가가치세법",""]];  // [짧은 이름, 기준 문서, 확인일]. 빈 날짜는 관리자가 입력
 const MODELS=[["claude-sonnet-5-5","Sonnet 5.5 · 균형"],["claude-haiku-5-5","Haiku 5.5 · 빠름"],["claude-opus-5-5","Opus 5.5 · 정밀"]];
-const ART_URL="https://claude.ai/artifact/Bd9u56YXJaqyfnhUADafPy";
+const ART_URL="https://claude.ai/artifact/XLomisii9cBo6jBKzXY2ok";
 const MODE_LABEL={account:"본인 Claude 계정",chat:"Claude 채팅창",apikey:"Claude API 키",rules:"AI 없이 기본 규칙"};
 let sample=null,imgLimits=null,ctl=null;
-let acctReady=null,acctWhy=null;         // acctReady: null 확인 중 · true · false
+let acctReady=null,acctWhy=null,acctPerm=null;         // acctReady: null 확인 중 · true · false
 let mode=LS.get("kqc-mode",null);
 let apiModel=LS.get("kqc-model",MODELS[0][0]);
 let apiKey=LS.get("kqc-key","")||"";
@@ -1623,8 +1625,8 @@ function renderConn(){
   let label=MODE_LABEL[m],cls="ai-pill",t="";
   if(m==="account"){
     if(acctReady===null){label="확인 중";}
-    else if(acctReady){cls+=" on";t="본인 Claude 계정으로 견적서 이미지·PDF를 읽습니다. 사용량은 본인 한도에서 차감됩니다."+(imgLimits?"":" 이 화면에서는 이미지를 보낼 수 없어 글로 붙여 넣은 내용만 읽습니다.");}
-    else{cls+=" off";label="본인 계정 연결 안 됨";t=({nofile:"내려받은 HTML 파일로 열려 본인 계정 연결을 쓸 수 없습니다. ‘다른 연결 방식’에서 채팅창이나 API 키를 고르세요.",denied:"이 페이지의 Claude 사용이 거부되어 있습니다. ‘다른 연결 방식’에서 권한 설정을 여세요.",unavail:"Claude를 쓸 수 없습니다. claude.ai에 로그인한 뒤 새로 고침하거나 다른 연결 방식을 고르세요."})[acctWhy]||"본인 계정으로 연결할 수 없습니다.";}
+    else if(acctReady){cls+=" on";if(acctPerm==="prompt")label="허용 필요";t=(acctPerm==="prompt"?"처음 한 번 Claude 사용 허용이 필요합니다. ‘Claude 연결하기’를 누르거나 검토하기를 누르면 허용 창이 뜹니다. ":"")+"본인 Claude 계정으로 견적서 이미지·PDF를 읽습니다. 사용량은 본인 한도에서 차감됩니다."+(imgLimits?"":" 이 화면에서는 이미지를 보낼 수 없어 글로 붙여 넣은 내용만 읽습니다.");}
+    else{cls+=" off";label="본인 계정 연결 안 됨";t=({nofile:"이 주소(GitHub Pages·내려받은 파일)에서는 Claude 로그인이 되지 않습니다. 위 ‘claude.ai에서 열기’로 열면 본인 계정으로 바로 연결됩니다. 아니면 ‘다른 연결 방식’에서 채팅창을 고르세요.",denied:"이 페이지의 Claude 사용이 꺼져 있습니다. 위 ‘권한 다시 켜기’를 누르세요.",unavail:"Claude를 쓸 수 없습니다. 건국대 조직 계정으로 claude.ai에 로그인했는지 확인하고 새로 고침하세요. 조직 정책으로 막혀 있으면 채팅창 방식을 쓰세요."})[acctWhy]||"본인 계정으로 연결할 수 없습니다.";}
   }else if(m==="apikey"){
     if(apiKey){cls+=" on";label=`API 키 · ${(MODELS.find(x=>x[0]===apiModel)||[0,apiModel])[1].split(" ·")[0]}`;t="이 브라우저에서 Anthropic으로 직접 보냅니다. 요금은 키 소유자 계정에 부과됩니다.";}
     else{cls+=" off";label="API 키 입력 필요";t="‘다른 연결 방식’에서 API 키를 입력하세요.";}
@@ -1636,11 +1638,17 @@ function renderConn(){
   {const off=cls.includes("off"),inArt=!!(window.claude&&window.claude.use);
    const T={account:["본인 Claude 계정 연결됨","claude.ai 계정으로 견적서를 읽습니다"],chat:["Claude 채팅창 이용 중","요청문을 claude.ai 채팅에 붙여 넣는 방식"],apikey:["Claude API 키 이용 중","이 브라우저에서 Anthropic으로 직접 보냅니다"],rules:["AI 없이 기본 규칙 사용 중","비교표 값으로 규칙 점검만 합니다"]}[m];
    let ti=T[0],su=T[1];
-   if(m==="account"&&acctReady!==true){ti=acctReady===null?"연결 확인 중":"본인 계정 연결 안 됨";su=acctReady===null?"":"claude.ai 링크로 열어야 쓸 수 있습니다";}
+   if(m==="account"&&acctReady!==true){ti=acctReady===null?"연결 확인 중":"본인 계정 연결 안 됨";su=acctReady===null?"":(acctWhy==="nofile"?"이 주소에서는 Claude 로그인이 안 됩니다 · 아래 버튼으로 claude.ai에서 여세요":acctWhy==="denied"?"이 페이지의 Claude 사용이 꺼져 있습니다":"claude.ai 조직 계정 로그인 상태를 확인하세요");}
+   if(m==="account"&&acctReady===true&&acctPerm==="prompt"){ti="Claude 사용 허용 필요";su="처음 한 번만 허용하면 됩니다";}
+   if(!inArt&&m!=="account"&&acctWhy==="nofile"){su+=" · 본인 계정은 claude.ai에서 열 때만 쓸 수 있습니다";}
    if(m==="apikey"&&!apiKey){ti="API 키 입력 필요";su="‘연결 세부 설정’에서 키를 입력하세요";}
    $("ccTitle").textContent=ti;$("ccSub").textContent=su;
    $("connCard").classList.toggle("off",off);
-   const op=$("ccOpen");op.hidden=inArt;}
+   const op=$("ccOpen");op.hidden=inArt;
+   const ab=$("ccAct");
+   if(inArt&&acctPerm==="prompt"&&sample){ab.hidden=false;ab.textContent="Claude 연결하기";ab.onclick=acctConnect;}
+   else if(inArt&&acctWhy==="denied"){ab.hidden=false;ab.textContent="권한 다시 켜기";ab.onclick=acctManage;}
+   else ab.hidden=true;}
   const noAI=(m==="rules")||cls.includes("off");
   const tb=$("tmBtn");if(tb){tb.classList.toggle("alert",noAI);$("tmWarn").hidden=!noAI;}
   const us=$("useState"),u=getU(),gated=(m==="account"||m==="apikey");
@@ -1654,7 +1662,7 @@ function renderConn(){
 function openConn(){
   const acctOk=acctReady===true,cur=mode||"rules";
   const radio=(v,t,d,dis,extra="")=>`<label class="rad${dis?" dis":""}"><input type="radio" name="cm" value="${v}"${cur===v?" checked":""}${dis?" disabled":""}><span><b>${t}</b><small>${d}</small></span>${extra?`<div class="rad-extra">${extra}</div>`:""}</label>`;
-  const acctExtra=acctOk?"":`<span class="mdl-note">${acctWhy==="nofile"?"이 화면(내려받은 파일 등)에서는 쓸 수 없습니다. claude.ai 링크로 열어야 합니다.":"권한이 필요합니다."}</span><span class="mdl-row">${window.claude?`<button type="button" id="cmPerm">권한 설정 열기</button>`:""}<a class="ai-link" href="https://claude.ai/login" target="_blank" rel="noopener">claude.ai 로그인</a></span>`;
+  const acctExtra=acctOk?"":`<span class="mdl-note">${acctWhy==="nofile"?"이 주소(GitHub Pages·내려받은 파일)에서는 Claude 로그인이 되지 않습니다. claude.ai에서 열어야 본인 계정으로 연결됩니다.":acctWhy==="denied"?"이 페이지의 Claude 사용이 꺼져 있습니다.":"건국대 조직 계정으로 claude.ai에 로그인했는지 확인하세요."}</span><span class="mdl-row">${window.claude&&acctWhy==="denied"?`<button type="button" id="cmPerm">권한 다시 켜기</button>`:""}${acctWhy==="nofile"?`<a class="ai-link" href="${ART_URL}" target="_blank" rel="noopener">claude.ai에서 열기 ↗</a>`:""}</span>`;
   const keyExtra=`<input type="password" id="cmKey" placeholder="sk-ant-… (API 키)" autocomplete="off" value="${esc(apiKey)}"><select id="cmModel" aria-label="모델">${MODELS.map(([v,l])=>`<option value="${v}"${v===apiModel?" selected":""}>${l}</option>`).join("")}</select><label class="chk"><input type="checkbox" id="cmRem"${LS.get("kqc-key","")?" checked":""}> 이 기기에 키 기억 (공용 PC에서는 끄세요)</label><span class="mdl-note">키는 이 브라우저에서 Anthropic으로만 전송됩니다. API 요금은 별도입니다.</span>`;
   const body=`<div class="rads">
     ${radio("account","본인 Claude 계정","claude.ai 링크로 열면 자동 연결 · 본인 사용 한도에서 차감",!acctOk,acctExtra)}
@@ -1671,14 +1679,35 @@ function openConn(){
         if(w.querySelector("#cmRem").checked&&apiKey)LS.set("kqc-key",apiKey);else LS.del("kqc-key");
         if(!apiKey){toast("API 키를 입력하세요.");return;}
       }
-      if(v==="account"&&window.claude){try{const pm=await claude.use("permissions");if(pm)await pm.request(["sample"]).catch(()=>({}));}catch{}}
+      if(v==="account"&&window.claude){try{const pm=await claude.use("permissions");if(pm){const r=await pm.request(["sample"]).catch(()=>null);const st=r&&r.sample;if(st)acctPerm=st;if(st==="denied"){acctReady=false;acctWhy="denied";renderConn();toast("Claude 사용을 허용하지 않아 연결하지 못했습니다.");return;}}}catch{}}
       mode=v;LS.set("kqc-mode",v);renderConn();close();toast(`연결 방식: ${MODE_LABEL[v]}`);
     }},
     {label:"닫기",onclick:c=>c()}
   ],onOpen:w=>{
     const pb=w.querySelector("#cmPerm");
-    if(pb)pb.onclick=async()=>{let pm=null;try{pm=await claude.use("permissions");}catch{}if(!pm){toast("이 화면에서는 권한 설정을 열 수 없습니다. 페이지 메뉴의 ‘권한(Permissions)’을 확인하세요.");return;}try{await pm.manage();}catch{toast("권한 창을 열지 못했습니다.");return;}toast("권한이 바뀌었다면 페이지를 새로 고침하세요.");};
+    if(pb)pb.onclick=acctManage;
   }});
+}
+async function acctConnect(){
+  let pm=null;try{pm=await claude.use("permissions");}catch{}
+  if(!pm){toast("이 화면에서는 허용 창을 열 수 없습니다.");return;}
+  const r=await pm.request(["sample"]).catch(()=>null);const st=r&&r.sample;
+  acctPerm=st||acctPerm;
+  if(st==="granted"){acctReady=true;if(!imgLimits&&sample){const lim=await sample.limits().catch(()=>null);imgLimits=(lim&&lim.images)||null;}mode="account";LS.set("kqc-mode","account");toast("본인 Claude 계정으로 연결했습니다.");}
+  else if(st==="denied"){acctReady=false;acctWhy="denied";toast("허용하지 않았습니다. ‘권한 다시 켜기’로 바꿀 수 있습니다.");}
+  renderConn();try{tmSync();}catch{}
+}
+async function acctManage(){
+  let pm=null;try{pm=await claude.use("permissions");}catch{}
+  if(!pm){toast("페이지 메뉴의 ‘권한(Permissions)’에서 Claude 사용을 켜세요.");return;}
+  try{await pm.manage();}catch{toast("권한 창을 열지 못했습니다. 페이지 메뉴의 ‘권한(Permissions)’을 확인하세요.");return;}
+  const st=await pm.state("sample").catch(()=>null);acctPerm=st;
+  if(st==="granted"||st==="prompt"){
+    if(!sample){try{sample=await claude.use("sample");}catch{}}
+    if(sample){acctReady=true;acctWhy=null;const lim=await sample.limits().catch(()=>null);imgLimits=(lim&&lim.images)||null;mode="account";LS.set("kqc-mode","account");toast("본인 Claude 계정 사용을 다시 켰습니다.");}
+    else toast("권한이 바뀌었습니다. 페이지를 새로 고침하세요.");
+  }
+  renderConn();try{tmSync();}catch{}
 }
 $("modeBtn").onclick=openConn;
 
@@ -2020,8 +2049,8 @@ async function run_core(){
   }catch(e){
     if(e&&e.name==="AbortError"){st.textContent="검토를 중지했습니다.";}
     else{
-      const msg={cancelled:"검토를 중지했습니다.",rate_limited:"요청이 많습니다. 잠시 후 다시 시도하세요.",invalid_json:"결과 형식이 올바르지 않습니다. 다시 시도하세요.",refused:"이 내용은 검토할 수 없습니다.",session_expired:"다시 로그인한 뒤 시도하세요.",prompt_too_large:"문서가 너무 깁니다. 나누어 검토하세요.",image_rejected:"읽을 수 없는 이미지가 있습니다. 다른 파일로 바꿔 주세요.",bad_key:"API 키가 맞지 않습니다. ‘다른 연결 방식’에서 키를 확인하세요.",api_error:"API 호출에 실패했습니다. 잠시 후 다시 시도하세요."}[e&&e.code];
-      if(["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"].includes(e&&e.code)){sample=null;acctReady=false;acctWhy=e.code==="not_granted"?"denied":"unavail";renderConn();render();st.textContent="Claude를 쓸 수 없어 비교표 값으로 기본 점검을 했습니다.";}
+      const msg={cancelled:"검토를 중지했습니다.",rate_limited:"요청이 많습니다. 잠시 후 다시 시도하세요.",invalid_json:"결과 형식이 올바르지 않습니다. 다시 시도하세요.",refused:"이 내용은 검토할 수 없습니다.",session_expired:"다시 로그인한 뒤 시도하세요.",prompt_too_large:"문서가 너무 깁니다. 나누어 검토하세요.",image_rejected:"읽을 수 없는 이미지가 있습니다. 다른 파일로 바꿔 주세요.",images_unavailable:"이 화면에서는 이미지를 Claude로 보낼 수 없습니다. 견적서 내용을 글로 붙여 넣어 주세요.",not_signed_in:"claude.ai에 로그인한 뒤 다시 시도하세요.",bad_key:"API 키가 맞지 않습니다. ‘다른 연결 방식’에서 키를 확인하세요.",api_error:"API 호출에 실패했습니다. 잠시 후 다시 시도하세요."}[e&&e.code];
+      if(["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"].includes(e&&e.code)){sample=null;acctReady=false;acctWhy=e.code==="not_granted"?"denied":"unavail";acctPerm=e.code==="not_granted"?"denied":acctPerm;renderConn();render();st.textContent="Claude를 쓸 수 없어 비교표 값으로 기본 점검을 했습니다.";}
       else st.textContent=msg||"검토 중 오류가 났습니다. 다시 시도하세요.";
     }
   }finally{clearInterval(timer);$("runBtn").disabled=false;$("stopBtn").hidden=true;}
@@ -2958,8 +2987,10 @@ ip.addEventListener("drop",e=>{if(e.defaultPrevented)return;e.preventDefault();t
   if(window.claude&&claude.use){
     claude.use("sample").then(async s=>{
       sample=s;
-      if(s){const lim=await s.limits().catch(()=>null);imgLimits=(lim&&lim.images)||null;acctReady=true;}
-      else{acctReady=false;let st=null;try{const pm=await claude.use("permissions");st=pm?await pm.state("sample"):null;}catch{}acctWhy=st==="denied"?"denied":"unavail";}
+      let st=null;try{const pm=await claude.use("permissions");st=pm?await pm.state("sample").catch(()=>null):null;}catch{}
+      acctPerm=st;
+      if(s&&st!=="denied"&&st!=="unavailable"){const lim=await s.limits().catch(()=>null);imgLimits=(lim&&lim.images)||null;acctReady=true;}
+      else{acctReady=false;acctWhy=st==="denied"?"denied":"unavail";}
       fin();
     }).catch(()=>{acctReady=false;acctWhy="unavail";fin();});
   }else{acctReady=false;acctWhy="nofile";fin();}
